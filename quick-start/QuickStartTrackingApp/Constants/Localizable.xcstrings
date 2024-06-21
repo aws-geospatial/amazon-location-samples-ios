@@ -1,0 +1,98 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Cancel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        }
+      }
+    },
+    "Error" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error"
+          }
+        }
+      }
+    },
+    "Loading..." : {
+
+    },
+    "locationManagerAlertText" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allow \\\"Quick Start App\\\" to use your location"
+          }
+        }
+      }
+    },
+    "locationManagerAlertTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We need your location to detect your location in map"
+          }
+        }
+      }
+    },
+    "NotAllFieldsAreConfigured" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not all the fields are configured"
+          }
+        }
+      }
+    },
+    "OK" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
+    "StartTrackingLabel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start Tracking"
+          }
+        }
+      }
+    },
+    "StopTrackingLabel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop Tracking"
+          }
+        }
+      }
+    },
+    "Tracking" : {
+
+    }
+  },
+  "version" : "1.0"
+}

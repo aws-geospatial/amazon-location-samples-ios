@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IdentityPoolId</key>
+	<string>${IDENTITY_POOL_ID}</string>
+	<key>IndexName</key>
+	<string>${INDEX_NAME}</string>
+	<key>MapName</key>
+	<string>$(MAP_NAME)</string>
+	<key>Region</key>
+	<string>${REGION}</string>
+	<key>TrackerName</key>
+	<string>${TRACKER_NAME}</string>
+</dict>
+</plist>

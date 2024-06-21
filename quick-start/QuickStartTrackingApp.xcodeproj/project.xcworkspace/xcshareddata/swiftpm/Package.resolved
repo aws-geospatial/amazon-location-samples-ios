@@ -1,0 +1,78 @@
+{
+  "originHash" : "8f4e7432cb72de3885bd1e995601e7af495c8abd6425b1712512cb83ec1c1e15",
+  "pins" : [
+    {
+      "identity" : "amazon-location-mobile-auth-sdk-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/aws-geospatial/amazon-location-mobile-auth-sdk-ios.git",
+      "state" : {
+        "revision" : "6310a2e14c320ac87f3d31edbccaa1b46f2c8efd",
+        "version" : "0.2.0"
+      }
+    },
+    {
+      "identity" : "amazon-location-mobile-tracking-sdk-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/aws-geospatial/amazon-location-mobile-tracking-sdk-ios",
+      "state" : {
+        "revision" : "1bf2c6c744628d094041c9d432b0fecafc1b98c1",
+        "version" : "0.2.0"
+      }
+    },
+    {
+      "identity" : "aws-crt-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/awslabs/aws-crt-swift",
+      "state" : {
+        "revision" : "b6380f683b31072d77b601c88674461c11bcad5a",
+        "version" : "0.30.0"
+      }
+    },
+    {
+      "identity" : "aws-sdk-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/awslabs/aws-sdk-swift",
+      "state" : {
+        "revision" : "14da8fcf13246e4f46cadc7a5ce291d839f3225d",
+        "version" : "0.45.0"
+      }
+    },
+    {
+      "identity" : "keychain-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/evgenyneu/keychain-swift.git",
+      "state" : {
+        "revision" : "d108a1fa6189e661f91560548ef48651ed8d93b9",
+        "version" : "20.0.0"
+      }
+    },
+    {
+      "identity" : "maplibre-gl-native-distribution",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/maplibre/maplibre-gl-native-distribution",
+      "state" : {
+        "revision" : "3f712ee1e65ef7ed6ca6db07658689aa3d185064",
+        "version" : "6.5.0"
+      }
+    },
+    {
+      "identity" : "smithy-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/smithy-lang/smithy-swift",
+      "state" : {
+        "revision" : "a30764bf83af6876a3956aa394c838dcf2975cb3",
+        "version" : "0.50.0"
+      }
+    },
+    {
+      "identity" : "swift-log",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-log.git",
+      "state" : {
+        "revision" : "e97a6fcb1ab07462881ac165fdbb37f067e205d5",
+        "version" : "1.5.4"
+      }
+    }
+  ],
+  "version" : 3
+}

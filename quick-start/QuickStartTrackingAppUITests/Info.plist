@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>TestApiKey</key>
+	<string>$(TEST_API_KEY}</string>
+	<key>TestIdentityPoolId</key>
+	<string>$(TEST_IDENTITY_POOL_ID)</string>
+	<key>TestMapName</key>
+	<string>$(TEST_MAP_NAME)</string>
+	<key>TestRegion</key>
+	<string></string>
+	<key>TestTrackerName</key>
+	<string>$(TEST_TRACKER_NAME}</string>
+</dict>
+</plist>

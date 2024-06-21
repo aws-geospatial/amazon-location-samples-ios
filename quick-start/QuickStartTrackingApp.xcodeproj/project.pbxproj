@@ -1,0 +1,886 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7C139D172C2194EC001AA56E /* AmazonLocationiOSTrackingSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 7C139D162C2194EC001AA56E /* AmazonLocationiOSTrackingSDK */; };
+		7CB6035D2C0A6F2F00852261 /* AWSLocation in Frameworks */ = {isa = PBXBuildFile; productRef = 7CB6035C2C0A6F2F00852261 /* AWSLocation */; };
+		F11DE91C2BD25EFC0047E398 /* MapLibre in Frameworks */ = {isa = PBXBuildFile; productRef = F11DE91B2BD25EFC0047E398 /* MapLibre */; };
+		F11DE92C2BD2A0EE0047E398 /* MapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11DE92B2BD2A0EE0047E398 /* MapUITests.swift */; };
+		F11DE92E2BD2A10B0047E398 /* UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11DE92D2BD2A10B0047E398 /* UITests.swift */; };
+		F11DE9302BD2A12B0047E398 /* XCTestCase+toggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11DE92F2BD2A12B0047E398 /* XCTestCase+toggle.swift */; };
+		F11DE9382BD6BC860047E398 /* TrackingBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11DE9372BD6BC860047E398 /* TrackingBottomView.swift */; };
+		F11DE93D2BD7F3040047E398 /* CenterAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11DE93C2BD7F3040047E398 /* CenterAddressView.swift */; };
+		F11DE93F2BD805000047E398 /* UserLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11DE93E2BD805000047E398 /* UserLocationView.swift */; };
+		F120B5662C19CDCA007A55F4 /* AmazonLocationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F120B5652C19CDCA007A55F4 /* AmazonLocationClient.swift */; };
+		F1B70F342C0DE7A700649A83 /* AwsCommonRuntimeKit in Frameworks */ = {isa = PBXBuildFile; productRef = F1B70F332C0DE7A700649A83 /* AwsCommonRuntimeKit */; };
+		F1B70F362C0DE7A700649A83 /* Elasticurl in Frameworks */ = {isa = PBXBuildFile; productRef = F1B70F352C0DE7A700649A83 /* Elasticurl */; };
+		F1C6739E2C0872300055EB97 /* AWSSignatureV4Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C6739D2C0872300055EB97 /* AWSSignatureV4Delegate.swift */; };
+		F1E9605C2BCF697900192ACB /* QuickStartTrackingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E9605B2BCF697900192ACB /* QuickStartTrackingApp.swift */; };
+		F1E960602BCF697B00192ACB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1E9605F2BCF697B00192ACB /* Assets.xcassets */; };
+		F1E960632BCF697B00192ACB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1E960622BCF697B00192ACB /* Preview Assets.xcassets */; };
+		F1E9606D2BCF697B00192ACB /* QuickStartTrackingAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E9606C2BCF697B00192ACB /* QuickStartTrackingAppTests.swift */; };
+		F1E9608A2BCF6AEE00192ACB /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E960892BCF6AEE00192ACB /* Config.swift */; };
+		F1E960972BCFDC7F00192ACB /* TrackingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E960962BCFDC7F00192ACB /* TrackingViewModel.swift */; };
+		F1E960992BCFE77300192ACB /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E960982BCFE77300192ACB /* MapView.swift */; };
+		F1E9609C2BD004F000192ACB /* TrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E9609B2BD004EF00192ACB /* TrackingView.swift */; };
+		F1E960A02BD0059B00192ACB /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F1E9609F2BD0059B00192ACB /* Localizable.xcstrings */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F1E960692BCF697B00192ACB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F1E960502BCF697900192ACB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F1E960572BCF697900192ACB;
+			remoteInfo = QuickStartTrackingApp;
+		};
+		F1E960732BCF697B00192ACB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F1E960502BCF697900192ACB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F1E960572BCF697900192ACB;
+			remoteInfo = QuickStartTrackingApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F11DE9232BD29F7B0047E398 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		F11DE9242BD2A0070047E398 /* TestConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = TestConfig.xcconfig; sourceTree = "<group>"; };
+		F11DE92B2BD2A0EE0047E398 /* MapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapUITests.swift; sourceTree = "<group>"; };
+		F11DE92D2BD2A10B0047E398 /* UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITests.swift; sourceTree = "<group>"; };
+		F11DE92F2BD2A12B0047E398 /* XCTestCase+toggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+toggle.swift"; sourceTree = "<group>"; };
+		F11DE9312BD2A4210047E398 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F11DE9372BD6BC860047E398 /* TrackingBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingBottomView.swift; sourceTree = "<group>"; };
+		F11DE93C2BD7F3040047E398 /* CenterAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterAddressView.swift; sourceTree = "<group>"; };
+		F11DE93E2BD805000047E398 /* UserLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationView.swift; sourceTree = "<group>"; };
+		F120B5652C19CDCA007A55F4 /* AmazonLocationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazonLocationClient.swift; sourceTree = "<group>"; };
+		F1C6739D2C0872300055EB97 /* AWSSignatureV4Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSSignatureV4Delegate.swift; sourceTree = "<group>"; };
+		F1E960582BCF697900192ACB /* QuickStartTrackingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickStartTrackingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1E9605B2BCF697900192ACB /* QuickStartTrackingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickStartTrackingApp.swift; sourceTree = "<group>"; };
+		F1E9605F2BCF697B00192ACB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F1E960622BCF697B00192ACB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F1E960682BCF697B00192ACB /* QuickStartTrackingAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickStartTrackingAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1E9606C2BCF697B00192ACB /* QuickStartTrackingAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickStartTrackingAppTests.swift; sourceTree = "<group>"; };
+		F1E960722BCF697B00192ACB /* QuickStartTrackingAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickStartTrackingAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1E960892BCF6AEE00192ACB /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		F1E960962BCFDC7F00192ACB /* TrackingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingViewModel.swift; sourceTree = "<group>"; };
+		F1E960982BCFE77300192ACB /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		F1E9609B2BD004EF00192ACB /* TrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingView.swift; sourceTree = "<group>"; };
+		F1E9609F2BD0059B00192ACB /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; name = Localizable.xcstrings; path = QuickStartTrackingApp/Constants/Localizable.xcstrings; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F1E960552BCF697900192ACB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CB6035D2C0A6F2F00852261 /* AWSLocation in Frameworks */,
+				F11DE91C2BD25EFC0047E398 /* MapLibre in Frameworks */,
+				7C139D172C2194EC001AA56E /* AmazonLocationiOSTrackingSDK in Frameworks */,
+				F1B70F362C0DE7A700649A83 /* Elasticurl in Frameworks */,
+				F1B70F342C0DE7A700649A83 /* AwsCommonRuntimeKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1E960652BCF697B00192ACB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1E9606F2BCF697B00192ACB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F1E9604F2BCF697900192ACB = {
+			isa = PBXGroup;
+			children = (
+				F11DE9242BD2A0070047E398 /* TestConfig.xcconfig */,
+				F11DE9232BD29F7B0047E398 /* Config.xcconfig */,
+				F1E9605A2BCF697900192ACB /* QuickStartTrackingApp */,
+				F1E9606B2BCF697B00192ACB /* QuickStartTrackingAppTests */,
+				F1E960752BCF697B00192ACB /* QuickStartTrackingAppUITests */,
+				F1E960592BCF697900192ACB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F1E960592BCF697900192ACB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F1E960582BCF697900192ACB /* QuickStartTrackingApp.app */,
+				F1E960682BCF697B00192ACB /* QuickStartTrackingAppTests.xctest */,
+				F1E960722BCF697B00192ACB /* QuickStartTrackingAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F1E9605A2BCF697900192ACB /* QuickStartTrackingApp */ = {
+			isa = PBXGroup;
+			children = (
+				F11DE9312BD2A4210047E398 /* Info.plist */,
+				F1E960952BCFDC5D00192ACB /* ViewModels */,
+				F1E960882BCF6AD600192ACB /* Constants */,
+				F1E960852BCF6A5B00192ACB /* Views */,
+				F1E9605B2BCF697900192ACB /* QuickStartTrackingApp.swift */,
+				F1E9605F2BCF697B00192ACB /* Assets.xcassets */,
+				F1E960612BCF697B00192ACB /* Preview Content */,
+			);
+			path = QuickStartTrackingApp;
+			sourceTree = "<group>";
+		};
+		F1E960612BCF697B00192ACB /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				F1E960622BCF697B00192ACB /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F1E9606B2BCF697B00192ACB /* QuickStartTrackingAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				F1E9606C2BCF697B00192ACB /* QuickStartTrackingAppTests.swift */,
+			);
+			path = QuickStartTrackingAppTests;
+			sourceTree = "<group>";
+		};
+		F1E960752BCF697B00192ACB /* QuickStartTrackingAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F11DE92B2BD2A0EE0047E398 /* MapUITests.swift */,
+				F11DE92D2BD2A10B0047E398 /* UITests.swift */,
+				F11DE92F2BD2A12B0047E398 /* XCTestCase+toggle.swift */,
+			);
+			path = QuickStartTrackingAppUITests;
+			sourceTree = "<group>";
+		};
+		F1E960852BCF6A5B00192ACB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F1E9609B2BD004EF00192ACB /* TrackingView.swift */,
+				F1E960982BCFE77300192ACB /* MapView.swift */,
+				F11DE93E2BD805000047E398 /* UserLocationView.swift */,
+				F11DE93C2BD7F3040047E398 /* CenterAddressView.swift */,
+				F11DE9372BD6BC860047E398 /* TrackingBottomView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F1E960882BCF6AD600192ACB /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				F1E960892BCF6AEE00192ACB /* Config.swift */,
+				F1E9609F2BD0059B00192ACB /* Localizable.xcstrings */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		F1E960952BCFDC5D00192ACB /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F1E960962BCFDC7F00192ACB /* TrackingViewModel.swift */,
+				F1C6739D2C0872300055EB97 /* AWSSignatureV4Delegate.swift */,
+				F120B5652C19CDCA007A55F4 /* AmazonLocationClient.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F1E960572BCF697900192ACB /* QuickStartTrackingApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F1E9607C2BCF697B00192ACB /* Build configuration list for PBXNativeTarget "QuickStartTrackingApp" */;
+			buildPhases = (
+				F1E960542BCF697900192ACB /* Sources */,
+				F1E960552BCF697900192ACB /* Frameworks */,
+				F1E960562BCF697900192ACB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QuickStartTrackingApp;
+			packageProductDependencies = (
+				F11DE91B2BD25EFC0047E398 /* MapLibre */,
+				7CB6035C2C0A6F2F00852261 /* AWSLocation */,
+				F1B70F332C0DE7A700649A83 /* AwsCommonRuntimeKit */,
+				F1B70F352C0DE7A700649A83 /* Elasticurl */,
+				7C139D162C2194EC001AA56E /* AmazonLocationiOSTrackingSDK */,
+			);
+			productName = QuickStartTrackingApp;
+			productReference = F1E960582BCF697900192ACB /* QuickStartTrackingApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F1E960672BCF697B00192ACB /* QuickStartTrackingAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F1E9607F2BCF697B00192ACB /* Build configuration list for PBXNativeTarget "QuickStartTrackingAppTests" */;
+			buildPhases = (
+				F1E960642BCF697B00192ACB /* Sources */,
+				F1E960652BCF697B00192ACB /* Frameworks */,
+				F1E960662BCF697B00192ACB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F1E9606A2BCF697B00192ACB /* PBXTargetDependency */,
+			);
+			name = QuickStartTrackingAppTests;
+			productName = QuickStartTrackingAppTests;
+			productReference = F1E960682BCF697B00192ACB /* QuickStartTrackingAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F1E960712BCF697B00192ACB /* QuickStartTrackingAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F1E960822BCF697B00192ACB /* Build configuration list for PBXNativeTarget "QuickStartTrackingAppUITests" */;
+			buildPhases = (
+				F1E9606E2BCF697B00192ACB /* Sources */,
+				F1E9606F2BCF697B00192ACB /* Frameworks */,
+				F1E960702BCF697B00192ACB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F1E960742BCF697B00192ACB /* PBXTargetDependency */,
+			);
+			name = QuickStartTrackingAppUITests;
+			productName = QuickStartTrackingAppUITests;
+			productReference = F1E960722BCF697B00192ACB /* QuickStartTrackingAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F1E960502BCF697900192ACB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					F1E960572BCF697900192ACB = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					F1E960672BCF697B00192ACB = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = F1E960572BCF697900192ACB;
+					};
+					F1E960712BCF697B00192ACB = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = F1E960572BCF697900192ACB;
+					};
+				};
+			};
+			buildConfigurationList = F1E960532BCF697900192ACB /* Build configuration list for PBXProject "QuickStartTrackingApp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F1E9604F2BCF697900192ACB;
+			packageReferences = (
+				F11DE91A2BD25EFC0047E398 /* XCRemoteSwiftPackageReference "maplibre-gl-native-distribution" */,
+				7CB6035B2C0A6F2F00852261 /* XCRemoteSwiftPackageReference "aws-sdk-swift" */,
+				7C139D152C2194EC001AA56E /* XCRemoteSwiftPackageReference "amazon-location-mobile-tracking-sdk-ios" */,
+			);
+			productRefGroup = F1E960592BCF697900192ACB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F1E960572BCF697900192ACB /* QuickStartTrackingApp */,
+				F1E960672BCF697B00192ACB /* QuickStartTrackingAppTests */,
+				F1E960712BCF697B00192ACB /* QuickStartTrackingAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F1E960562BCF697900192ACB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1E960632BCF697B00192ACB /* Preview Assets.xcassets in Resources */,
+				F1E960602BCF697B00192ACB /* Assets.xcassets in Resources */,
+				F1E960A02BD0059B00192ACB /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1E960662BCF697B00192ACB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1E960702BCF697B00192ACB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F1E960542BCF697900192ACB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F11DE9382BD6BC860047E398 /* TrackingBottomView.swift in Sources */,
+				F120B5662C19CDCA007A55F4 /* AmazonLocationClient.swift in Sources */,
+				F1E9609C2BD004F000192ACB /* TrackingView.swift in Sources */,
+				F11DE93F2BD805000047E398 /* UserLocationView.swift in Sources */,
+				F11DE93D2BD7F3040047E398 /* CenterAddressView.swift in Sources */,
+				F1E9608A2BCF6AEE00192ACB /* Config.swift in Sources */,
+				F1E9605C2BCF697900192ACB /* QuickStartTrackingApp.swift in Sources */,
+				F1E960992BCFE77300192ACB /* MapView.swift in Sources */,
+				F1C6739E2C0872300055EB97 /* AWSSignatureV4Delegate.swift in Sources */,
+				F1E960972BCFDC7F00192ACB /* TrackingViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1E960642BCF697B00192ACB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1E9606D2BCF697B00192ACB /* QuickStartTrackingAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1E9606E2BCF697B00192ACB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F11DE9302BD2A12B0047E398 /* XCTestCase+toggle.swift in Sources */,
+				F11DE92E2BD2A10B0047E398 /* UITests.swift in Sources */,
+				F11DE92C2BD2A0EE0047E398 /* MapUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F1E9606A2BCF697B00192ACB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F1E960572BCF697900192ACB /* QuickStartTrackingApp */;
+			targetProxy = F1E960692BCF697B00192ACB /* PBXContainerItemProxy */;
+		};
+		F1E960742BCF697B00192ACB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F1E960572BCF697900192ACB /* QuickStartTrackingApp */;
+			targetProxy = F1E960732BCF697B00192ACB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		F11DE9252BD2A06A0047E398 /* Test */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F11DE9242BD2A0070047E398 /* TestConfig.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Test;
+		};
+		F11DE9262BD2A06A0047E398 /* Test */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"QuickStartTrackingApp/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = QuickStartTrackingApp/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "User device wants to send its location to Amazon tracking service";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "User device wants to send its location to Amazon tracking service";
+				INFOPLIST_KEY_NSLocationUsageDescription = "User device wants to send its location to Amazon tracking service";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "User device wants to send its location to Amazon tracking service";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.makeen.QuickStartTrackingApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Test;
+		};
+		F11DE9272BD2A06A0047E398 /* Test */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F11DE9242BD2A0070047E398 /* TestConfig.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.makeen.QuickStartTrackingAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuickStartTrackingApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/QuickStartTrackingApp";
+			};
+			name = Test;
+		};
+		F11DE9282BD2A06A0047E398 /* Test */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F11DE9242BD2A0070047E398 /* TestConfig.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = QuickStartTrackingAppUITests/Info.plist;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.makeen.QuickStartTrackingAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = QuickStartTrackingApp;
+			};
+			name = Test;
+		};
+		F1E9607A2BCF697B00192ACB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F11DE9232BD29F7B0047E398 /* Config.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F1E9607B2BCF697B00192ACB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F11DE9232BD29F7B0047E398 /* Config.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F1E9607D2BCF697B00192ACB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"QuickStartTrackingApp/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = QuickStartTrackingApp/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "User device wants to send its location to Amazon tracking service";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "User device wants to send its location to Amazon tracking service";
+				INFOPLIST_KEY_NSLocationUsageDescription = "User device wants to send its location to Amazon tracking service";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "User device wants to send its location to Amazon tracking service";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.makeen.QuickStartTrackingApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F1E9607E2BCF697B00192ACB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"QuickStartTrackingApp/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = QuickStartTrackingApp/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "User device wants to send its location to Amazon tracking service";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "User device wants to send its location to Amazon tracking service";
+				INFOPLIST_KEY_NSLocationUsageDescription = "User device wants to send its location to Amazon tracking service";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "User device wants to send its location to Amazon tracking service";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.makeen.QuickStartTrackingApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F1E960802BCF697B00192ACB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.makeen.QuickStartTrackingAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuickStartTrackingApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/QuickStartTrackingApp";
+			};
+			name = Debug;
+		};
+		F1E960812BCF697B00192ACB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.makeen.QuickStartTrackingAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuickStartTrackingApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/QuickStartTrackingApp";
+			};
+			name = Release;
+		};
+		F1E960832BCF697B00192ACB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = QuickStartTrackingAppUITests/Info.plist;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.makeen.QuickStartTrackingAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = QuickStartTrackingApp;
+			};
+			name = Debug;
+		};
+		F1E960842BCF697B00192ACB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = QuickStartTrackingAppUITests/Info.plist;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.makeen.QuickStartTrackingAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = QuickStartTrackingApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F1E960532BCF697900192ACB /* Build configuration list for PBXProject "QuickStartTrackingApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1E9607A2BCF697B00192ACB /* Debug */,
+				F11DE9252BD2A06A0047E398 /* Test */,
+				F1E9607B2BCF697B00192ACB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F1E9607C2BCF697B00192ACB /* Build configuration list for PBXNativeTarget "QuickStartTrackingApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1E9607D2BCF697B00192ACB /* Debug */,
+				F11DE9262BD2A06A0047E398 /* Test */,
+				F1E9607E2BCF697B00192ACB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F1E9607F2BCF697B00192ACB /* Build configuration list for PBXNativeTarget "QuickStartTrackingAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1E960802BCF697B00192ACB /* Debug */,
+				F11DE9272BD2A06A0047E398 /* Test */,
+				F1E960812BCF697B00192ACB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F1E960822BCF697B00192ACB /* Build configuration list for PBXNativeTarget "QuickStartTrackingAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1E960832BCF697B00192ACB /* Debug */,
+				F11DE9282BD2A06A0047E398 /* Test */,
+				F1E960842BCF697B00192ACB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7C139D152C2194EC001AA56E /* XCRemoteSwiftPackageReference "amazon-location-mobile-tracking-sdk-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aws-geospatial/amazon-location-mobile-tracking-sdk-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.0;
+			};
+		};
+		7CB6035B2C0A6F2F00852261 /* XCRemoteSwiftPackageReference "aws-sdk-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/awslabs/aws-sdk-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.44.0;
+			};
+		};
+		F11DE91A2BD25EFC0047E398 /* XCRemoteSwiftPackageReference "maplibre-gl-native-distribution" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/maplibre/maplibre-gl-native-distribution";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.3.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7C139D162C2194EC001AA56E /* AmazonLocationiOSTrackingSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7C139D152C2194EC001AA56E /* XCRemoteSwiftPackageReference "amazon-location-mobile-tracking-sdk-ios" */;
+			productName = AmazonLocationiOSTrackingSDK;
+		};
+		7CB6035C2C0A6F2F00852261 /* AWSLocation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7CB6035B2C0A6F2F00852261 /* XCRemoteSwiftPackageReference "aws-sdk-swift" */;
+			productName = AWSLocation;
+		};
+		F11DE91B2BD25EFC0047E398 /* MapLibre */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F11DE91A2BD25EFC0047E398 /* XCRemoteSwiftPackageReference "maplibre-gl-native-distribution" */;
+			productName = MapLibre;
+		};
+		F1B70F332C0DE7A700649A83 /* AwsCommonRuntimeKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AwsCommonRuntimeKit;
+		};
+		F1B70F352C0DE7A700649A83 /* Elasticurl */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Elasticurl;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = F1E960502BCF697900192ACB /* Project object */;
+}
