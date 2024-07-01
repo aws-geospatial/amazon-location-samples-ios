@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7C139D172C2194EC001AA56E /* AmazonLocationiOSTrackingSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 7C139D162C2194EC001AA56E /* AmazonLocationiOSTrackingSDK */; };
 		7CB6035D2C0A6F2F00852261 /* AWSLocation in Frameworks */ = {isa = PBXBuildFile; productRef = 7CB6035C2C0A6F2F00852261 /* AWSLocation */; };
 		F11DE91C2BD25EFC0047E398 /* MapLibre in Frameworks */ = {isa = PBXBuildFile; productRef = F11DE91B2BD25EFC0047E398 /* MapLibre */; };
 		F11DE92C2BD2A0EE0047E398 /* MapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11DE92B2BD2A0EE0047E398 /* MapUITests.swift */; };
@@ -81,7 +80,6 @@
 			files = (
 				7CB6035D2C0A6F2F00852261 /* AWSLocation in Frameworks */,
 				F11DE91C2BD25EFC0047E398 /* MapLibre in Frameworks */,
-				7C139D172C2194EC001AA56E /* AmazonLocationiOSTrackingSDK in Frameworks */,
 				F1B70F362C0DE7A700649A83 /* Elasticurl in Frameworks */,
 				F1B70F342C0DE7A700649A83 /* AwsCommonRuntimeKit in Frameworks */,
 			);
@@ -218,7 +216,6 @@
 				7CB6035C2C0A6F2F00852261 /* AWSLocation */,
 				F1B70F332C0DE7A700649A83 /* AwsCommonRuntimeKit */,
 				F1B70F352C0DE7A700649A83 /* Elasticurl */,
-				7C139D162C2194EC001AA56E /* AmazonLocationiOSTrackingSDK */,
 			);
 			productName = QuickStartTrackingApp;
 			productReference = F1E960582BCF697900192ACB /* QuickStartTrackingApp.app */;
@@ -295,7 +292,7 @@
 			packageReferences = (
 				F11DE91A2BD25EFC0047E398 /* XCRemoteSwiftPackageReference "maplibre-gl-native-distribution" */,
 				7CB6035B2C0A6F2F00852261 /* XCRemoteSwiftPackageReference "aws-sdk-swift" */,
-				7C139D152C2194EC001AA56E /* XCRemoteSwiftPackageReference "amazon-location-mobile-tracking-sdk-ios" */,
+				F14A898C2C32B72300F155B5 /* XCRemoteSwiftPackageReference "amazon-location-mobile-tracking-sdk-ios" */,
 			);
 			productRefGroup = F1E960592BCF697900192ACB /* Products */;
 			projectDirPath = "";
@@ -830,20 +827,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		7C139D152C2194EC001AA56E /* XCRemoteSwiftPackageReference "amazon-location-mobile-tracking-sdk-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/aws-geospatial/amazon-location-mobile-tracking-sdk-ios";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.2.0;
-			};
-		};
 		7CB6035B2C0A6F2F00852261 /* XCRemoteSwiftPackageReference "aws-sdk-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/awslabs/aws-sdk-swift";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.44.0;
+				kind = exactVersion;
+				version = 0.46.0;
 			};
 		};
 		F11DE91A2BD25EFC0047E398 /* XCRemoteSwiftPackageReference "maplibre-gl-native-distribution" */ = {
@@ -854,14 +843,17 @@
 				minimumVersion = 6.3.3;
 			};
 		};
+		F14A898C2C32B72300F155B5 /* XCRemoteSwiftPackageReference "amazon-location-mobile-tracking-sdk-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aws-geospatial/amazon-location-mobile-tracking-sdk-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7C139D162C2194EC001AA56E /* AmazonLocationiOSTrackingSDK */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7C139D152C2194EC001AA56E /* XCRemoteSwiftPackageReference "amazon-location-mobile-tracking-sdk-ios" */;
-			productName = AmazonLocationiOSTrackingSDK;
-		};
 		7CB6035C2C0A6F2F00852261 /* AWSLocation */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7CB6035B2C0A6F2F00852261 /* XCRemoteSwiftPackageReference "aws-sdk-swift" */;

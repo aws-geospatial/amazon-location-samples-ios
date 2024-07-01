@@ -41,6 +41,7 @@ final class TrackingViewModel : ObservableObject {
         self.clientIntialised = false
     }
     
+    
     func authWithCognito(identityPoolId: String?) async throws {
         guard let identityPoolId = identityPoolId?.trimmingCharacters(in: .whitespacesAndNewlines)
         else {
@@ -49,13 +50,17 @@ final class TrackingViewModel : ObservableObject {
             showAlert = true
             return
         }
+       
         credentialsProvider = try await authHelper.authenticateWithCognitoIdentityPool(identityPoolId: identityPoolId)
-        mapViewSigning()
+        if let cognitoCredentials = credentialsProvider?.getCognitoProvider()?.getCognitoCredentials(){
+            let amazonStaticCredentials = AmazonStaticCredentials(accessKeyId: cognitoCredentials.accessKeyId, secretKey: cognitoCredentials.secretKey, sessionToken: cognitoCredentials.sessionToken, expiration: cognitoCredentials.expiration)
+            mapViewSigning(amazonStaticCredentials: amazonStaticCredentials)
+        }
     }
     
-    func mapViewSigning() {
+    func mapViewSigning(amazonStaticCredentials: AmazonStaticCredentials) {
         DispatchQueue.main.async { [self] in
-            signingDelegate = AWSSignatureV4Delegate(credentialsProvider: credentialsProvider!)
+            signingDelegate = AWSSignatureV4Delegate(amazonStaticCredentials: amazonStaticCredentials, region: region)
             MLNOfflineStorage.shared.delegate = self.signingDelegate
             mapSigningIntialised = true
         }
@@ -151,27 +156,20 @@ final class TrackingViewModel : ObservableObject {
         if let trackingData = result {
             
             lastGetTrackingTime = Date()
-            let devicePositions = trackingData.devicePositions
-
-            let positions = devicePositions!.sorted { (pos1: LocationClientTypes.DevicePosition, pos2: LocationClientTypes.DevicePosition) -> Bool in
-                guard let date1 = pos1.sampleTime,
-                      let date2 = pos2.sampleTime else {
-                    return false
+            if let devicePositions = trackingData.devicePositions {
+                let positions = devicePositions.sorted { $0.sampleTime ?? Date.distantPast < $1.sampleTime ?? Date.distantPast }
+                let trackingPoints = positions.compactMap { position -> CLLocationCoordinate2D? in
+                    guard let latitude = position.position!.last, let longitude = position.position!.first else {
+                        return nil
+                    }
+                    return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
                 }
-                return date1 < date2
-            }
-
-            let trackingPoints = positions.compactMap { position -> CLLocationCoordinate2D? in
-                guard let latitude = position.position!.last, let longitude = position.position!.first else {
-                    return nil
+                DispatchQueue.main.async {
+                    self.mapViewDelegate!.drawTrackingPoints( trackingPoints: trackingPoints)
                 }
-                return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-            }
-            DispatchQueue.main.async {
-                self.mapViewDelegate!.drawTrackingPoints( trackingPoints: trackingPoints)
-            }
-            if let nextToken = trackingData.nextToken {
-                try await getTrackingPoints(nextToken: nextToken)
+                if let nextToken = trackingData.nextToken {
+                    try await getTrackingPoints(nextToken: nextToken)
+                }
             }
         }
     }

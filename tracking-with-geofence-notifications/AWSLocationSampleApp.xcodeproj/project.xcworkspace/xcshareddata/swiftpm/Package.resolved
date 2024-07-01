@@ -1,6 +1,24 @@
 {
-  "originHash" : "217aa118119f332c9a34d1bba88eca364e8fa12fbe3f5e5184e8ba5f6e94cc19",
+  "originHash" : "ec6bc3d090a78589987d65d582af3659e044854e5706f3a37c754934f5807190",
   "pins" : [
+    {
+      "identity" : "amazon-location-mobile-auth-sdk-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/makeen-project/amazon-location-mobile-auth-sdk-ios.git",
+      "state" : {
+        "branch" : "iot_mqtt_feature",
+        "revision" : "126d2620d7752413ca1e1aaac19c85718afffe98"
+      }
+    },
+    {
+      "identity" : "amazon-location-mobile-tracking-sdk-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/makeen-project/amazon-location-mobile-tracking-sdk-ios.git",
+      "state" : {
+        "branch" : "iot_mqtt_feature",
+        "revision" : "f42ca3f05eb609b3bcc27497e57a1d368d4f430a"
+      }
+    },
     {
       "identity" : "aws-crt-swift",
       "kind" : "remoteSourceControl",
@@ -15,8 +33,17 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/awslabs/aws-sdk-swift",
       "state" : {
-        "revision" : "3c20e0be8c8246de8b8e04372404ef1f90be71b6",
-        "version" : "0.46.0"
+        "branch" : "0.46.0",
+        "revision" : "3c20e0be8c8246de8b8e04372404ef1f90be71b6"
+      }
+    },
+    {
+      "identity" : "keychain-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/evgenyneu/keychain-swift.git",
+      "state" : {
+        "revision" : "d108a1fa6189e661f91560548ef48651ed8d93b9",
+        "version" : "20.0.0"
       }
     },
     {
@@ -42,8 +69,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-log.git",
       "state" : {
-        "revision" : "9cb486020ebf03bfa5b5df985387a14a98744537",
-        "version" : "1.6.1"
+        "revision" : "b3a637307772d20291d78a5b7a0d4204d9b1e981",
+        "version" : "1.6.0"
       }
     }
   ],

@@ -5,7 +5,7 @@ import AWSLocation
 public extension AmazonLocationClient {
     func searchPosition(indexName: String, input: SearchPlaceIndexForPositionInput) async throws -> SearchPlaceIndexForPositionOutput? {
         do {
-            if locationProvider.getCognitoProvider() != nil {
+            if locationProvider.getCredentialsProvider() != nil {
                 if locationClient == nil {
                     try await initialiseLocationClient()
                 }

@@ -4,8 +4,8 @@ import AmazonLocationiOSAuthSDK
 class AWSSignatureV4Delegate : NSObject, MLNOfflineStorageDelegate {
     private let awsSigner: AWSSignerV4
   
-    init(credentialsProvider: LocationCredentialsProvider) {
-        self.awsSigner = AWSSignerV4(amazonLocationCognitoCredentialsProvider: credentialsProvider.getCognitoProvider()!, serviceName: "geo")
+    init(amazonStaticCredentials: AmazonStaticCredentials, region: String) {
+        self.awsSigner = AWSSignerV4(credentials: amazonStaticCredentials, serviceName: "geo", region: region)
         super.init()
     }
  
@@ -14,7 +14,6 @@ class AWSSignatureV4Delegate : NSObject, MLNOfflineStorageDelegate {
             return url
         }
         let signedURL = awsSigner.signURL(url: url, expires: .hours(1))
-        
         return signedURL
     }
 }
