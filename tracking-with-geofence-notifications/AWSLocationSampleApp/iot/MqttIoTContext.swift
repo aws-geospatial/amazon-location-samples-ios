@@ -105,7 +105,6 @@ class MqttIoTContext: ObservableObject {
             do {
                 self.printView(contextName + " Mqtt5ClientTests: onWebSocketHandshake")
                 if let cognitoCredentials = cognitoCredentialsProvider.getCognitoCredentials() {
-                    let credentials = try Credentials(accessKey: cognitoCredentials.accessKeyId, secret: cognitoCredentials.secretKey, sessionToken: cognitoCredentials.sessionToken, expiration: cognitoCredentials.expiration)
                     let credentialsProvider = try CredentialsProvider(source: .static(accessKey: cognitoCredentials.accessKeyId, secret: cognitoCredentials.secretKey, sessionToken: cognitoCredentials.sessionToken))
                     let signingConfig = SigningConfig(algorithm: SigningAlgorithmType.signingV4,
                                                       signatureType: SignatureType.requestQueryParams,

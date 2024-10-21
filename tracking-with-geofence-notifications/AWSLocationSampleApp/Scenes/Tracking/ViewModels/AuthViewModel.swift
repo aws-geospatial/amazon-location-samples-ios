@@ -221,7 +221,7 @@ final class AuthViewModel : ObservableObject {
     }
 
     func batchEvaluateGeofences() async throws {
-        guard lastGetTrackingTime != nil, currentLocation != nil, let identityId = identityId else {
+        guard lastGetTrackingTime != nil, currentLocation != nil else {
             return
         }
         guard let geofenceCollectionName = getGeofenceCollectionName(geofenceCollectionArn: geofenceCollectionArn) else { return }
@@ -229,9 +229,7 @@ final class AuthViewModel : ObservableObject {
         deviceUpdate.deviceId = client.getDeviceId()
         deviceUpdate.position = [currentLocation.coordinate.longitude, currentLocation.coordinate.latitude]
         deviceUpdate.sampleTime = lastGetTrackingTime
-//        if let idRegion = identityId.components(separatedBy: ":").first, let id = identityId.components(separatedBy: ":").last {
-//            deviceUpdate.positionProperties = ["region": idRegion, "id": id]
-//        }
+
         let request = BatchEvaluateGeofencesRequest(collectionName: geofenceCollectionName, devicePositionUpdates: [deviceUpdate])
         print("device Id: \(String(describing: deviceUpdate.deviceId))")
         let response = try await client?.batchEvaluateGeofences(request: request)
