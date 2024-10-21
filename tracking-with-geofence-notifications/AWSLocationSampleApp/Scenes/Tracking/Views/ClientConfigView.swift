@@ -24,10 +24,6 @@ struct ClientConfigView: View {
                 TextField("Identity Pool ID", text: $authViewModel.identityPoolId)
                     .accessibility(identifier: "IdentityPoolID")
                 
-                Text("Map Name")
-                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                TextField("Map Name", text: $authViewModel.mapName).accessibility(identifier: "MapName")
-                
                 Text("Tracker Name")
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                 TextField("Tracker Name", text: $authViewModel.trackerName).accessibility(identifier: "TrackerName")
@@ -41,7 +37,7 @@ struct ClientConfigView: View {
                 TextField("Geofence Collection ARN", text: $authViewModel.geofenceCollectionArn).accessibility(identifier: "GeofenceCollectionARN")
                 
                 Button("Save Configuration") {
-                    if authViewModel.identityPoolId.isEmpty || authViewModel.mapName.isEmpty || authViewModel.trackerName.isEmpty || authViewModel.websocketUrl.isEmpty || authViewModel.geofenceCollectionArn.isEmpty {
+                    if authViewModel.identityPoolId.isEmpty || authViewModel.trackerName.isEmpty || authViewModel.websocketUrl.isEmpty || authViewModel.geofenceCollectionArn.isEmpty {
                         errorMessage = NSLocalizedString("FillAllFields", comment: "")
                         showError = true
                     }

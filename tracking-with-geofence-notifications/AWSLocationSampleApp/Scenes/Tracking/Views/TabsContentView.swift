@@ -3,7 +3,7 @@ import AmazonLocationiOSTrackingSDK
 
 struct TabsContentView: View {
     @State private var selectedTab = "Config"
-    @ObservedObject var authViewModel = AuthViewModel(apiKey: Config.apiKey, apiKeyRegion: Config.apiKeyRegion, identityPoolId: Config.identityPoolId, mapName: Config.mapName, trackerName: Config.trackerName, geofenceCollectionArn: Config.geofenceARN, websocketUrl: Config.websocketUrl)
+    @ObservedObject var authViewModel = AuthViewModel(apiKey: Config.apiKey, apiKeyRegion: Config.apiKeyRegion, identityPoolId: Config.identityPoolId, trackerName: Config.trackerName, geofenceCollectionArn: Config.geofenceARN, websocketUrl: Config.websocketUrl)
     var body: some View {
         TabView(selection: $selectedTab) {
             AWSConnectionView(authViewModel: authViewModel)

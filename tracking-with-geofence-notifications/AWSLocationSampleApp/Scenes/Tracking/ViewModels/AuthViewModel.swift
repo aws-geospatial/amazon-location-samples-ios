@@ -16,7 +16,6 @@ final class AuthViewModel : ObservableObject {
     @Published var apiKey : String
     @Published var apiKeyRegion : String
     @Published var identityPoolId : String
-    @Published var mapName : String
     @Published var trackerName : String
     @Published var geofenceCollectionArn : String
     @Published var websocketUrl : String
@@ -59,11 +58,10 @@ final class AuthViewModel : ObservableObject {
         distanceInterval = config.trackingDistanceInterval
     }
     
-    init(apiKey: String, apiKeyRegion: String, identityPoolId: String, mapName: String, trackerName: String, geofenceCollectionArn: String, websocketUrl: String) {
+    init(apiKey: String, apiKeyRegion: String, identityPoolId: String, trackerName: String, geofenceCollectionArn: String, websocketUrl: String) {
         self.apiKey = apiKey
         self.apiKeyRegion = apiKeyRegion
         self.identityPoolId = identityPoolId
-        self.mapName = mapName
         self.trackerName = trackerName
         self.geofenceCollectionArn = geofenceCollectionArn
         self.websocketUrl = websocketUrl
@@ -279,7 +277,6 @@ final class AuthViewModel : ObservableObject {
         UserDefaultsHelper.save(value: apiKey, key: .apiKey)
         UserDefaultsHelper.save(value: apiKeyRegion, key: .apiKeyRegion)
         UserDefaultsHelper.save(value: identityPoolId, key: .identityPoolID)
-        UserDefaultsHelper.save(value: mapName, key: .mapName)
         UserDefaultsHelper.save(value: trackerName, key: .trackerName)
         UserDefaultsHelper.save(value: geofenceCollectionArn, key: .geofenceCollectionArn)
         UserDefaultsHelper.save(value: websocketUrl, key: .websocketUrl)
