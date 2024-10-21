@@ -2,9 +2,11 @@ import SwiftUI
 import MapLibre
 import UIKit
 import AmazonLocationiOSAuthSDK
-import AWSCore
-import AWSLocationXCF
-import AWSMobileClientXCF
+import AWSIoT
+import AWSIoTEvents
+import AWSCognitoIdentity
+import AwsCommonRuntimeKit
+import AWSLocation
 
 struct MapView: UIViewRepresentable {
     var onMapViewAvailable: ((MLNMapView) -> Void)?
@@ -15,9 +17,15 @@ struct MapView: UIViewRepresentable {
     }
     
     func makeUIView(context: Context) -> MLNMapView {
-        let regionName = AWSEndpoint.toRegionString(identityPoolId: authViewModel.identityPoolId)
-        let styleURL = URL(string: "https://maps.geo.\(   regionName).amazonaws.com/maps/v0/maps/\(authViewModel.mapName)/style-descriptor")
-        let mapView = MLNMapView(frame: .zero, styleURL: styleURL)
+        let mapView = MLNMapView(frame: .zero)
+        let regionName = authViewModel.apiKeyRegion
+        let styleName = "Standard"
+        let colorScheme = "Light"  // You can change this to Dark if needed
+        if let styleURL = URL(string: "https://maps.geo.\(regionName).amazonaws.com/v2/styles/\(styleName)/descriptor?key=\(authViewModel.apiKey)&color-scheme=\(colorScheme)") {
+            DispatchQueue.main.async {
+                mapView.styleURL = styleURL
+            }
+        }
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.setZoomLevel(15, animated: true)
         mapView.showsUserLocation = true
@@ -55,11 +63,12 @@ struct MapView: UIViewRepresentable {
         
         public init(_ control: MapView, authViewModel: AuthViewModel) {
             self.control = control
+
             self.authViewModel = authViewModel
             super.init()
             self.authViewModel.delegate = self
         }
-
+        
         func mapViewDidFinishRenderingMap(_ mapView: MLNMapView, fullyRendered: Bool) {
             if(fullyRendered) {
                 mapView.accessibilityIdentifier = "MapView"
@@ -122,9 +131,10 @@ struct MapView: UIViewRepresentable {
                     point.coordinate = (userLocation?.location!.coordinate)!
                     point.accessibilityLabel = "LocationChange"
                     mapView.addAnnotation(point)
-                    
-                    authViewModel.getTrackingPoints()
-                    authViewModel.batchEvaluateGeofences()
+                    Task {
+                        try await authViewModel.getTrackingPoints()
+                        try await authViewModel.batchEvaluateGeofences()
+                    }
                     authViewModel.currentLocation = userLocation?.location
                 }
             }
@@ -161,7 +171,7 @@ struct MapView: UIViewRepresentable {
             mapView.addAnnotations(points)
         }
         
-        public func displayGeofences(geofences: [AWSLocationListGeofenceResponseEntry]) {
+        public func displayGeofences(geofences: [LocationClientTypes.ListGeofenceResponseEntry]) {
             for geofence in geofences {
                 guard let mapView = mlnMapView, let geometry = geofence.geometry, let polygon = geometry.polygon, !polygon.isEmpty else {
                     continue
@@ -171,7 +181,7 @@ struct MapView: UIViewRepresentable {
                 // AWSLocationGeofenceGeometry's polygon is an array of arrays of CLLocationDegrees (longitude, latitude)
                 let outerRing = polygon[0] // Get the first ring of the polygon
                 
-                var coordinates = outerRing.map { CLLocationCoordinate2D(latitude: $0[1] as! CLLocationDegrees, longitude: $0[0] as! CLLocationDegrees) }
+                var coordinates = outerRing.map { CLLocationCoordinate2D(latitude: $0[1], longitude: $0[0] ) }
                 
                     let polygonFeature = MLNPolygonFeature(coordinates: &coordinates, count: UInt(coordinates.count))
                     let sourceIdentifier = "geofence-source-\(geofence.geofenceId ?? UUID().uuidString)"
@@ -199,5 +209,5 @@ struct MapView: UIViewRepresentable {
 
 protocol MapViewDelegate: AnyObject {
     func drawTrackingPoints(trackingPoints: [CLLocationCoordinate2D]?)
-    func displayGeofences(geofences: [AWSLocationListGeofenceResponseEntry])
+    func displayGeofences(geofences: [LocationClientTypes.ListGeofenceResponseEntry])
 }

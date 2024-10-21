@@ -12,6 +12,12 @@
         }
       }
     },
+    "API Key" : {
+
+    },
+    "API Key Region" : {
+
+    },
     "Cancel" : {
       "extractionState" : "manual",
       "localizations" : {

@@ -9,6 +9,16 @@ struct ClientConfigView: View {
     var body: some View {
         NavigationView {
             Form {
+                Text("API Key")
+                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                TextField("API Key", text: $authViewModel.apiKey)
+                    .accessibility(identifier: "ApiKey")
+                
+                Text("API Key Region")
+                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                TextField("API Key Region", text: $authViewModel.apiKeyRegion)
+                    .accessibility(identifier: "ApiKeyRegion")
+                
                 Text("Identity Pool ID")
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                 TextField("Identity Pool ID", text: $authViewModel.identityPoolId)
