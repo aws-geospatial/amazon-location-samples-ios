@@ -11,8 +11,14 @@ struct MapView: UIViewRepresentable {
     }
     
     func makeUIView(context: Context) -> MLNMapView {
-        let styleURL = URL(string: "https://maps.geo.\(trackingViewModel.region).amazonaws.com/maps/v0/maps/\(trackingViewModel.mapName)/style-descriptor")
-        let mapView = MLNMapView(frame: .zero, styleURL: styleURL)
+        let mapView = MLNMapView(frame: .zero)
+        let styleName = "Standard"
+        let colorScheme = "Light"  // You can change this to Dark if needed
+        if let styleURL = URL(string: "https://maps.geo.\(trackingViewModel.apiKeyRegion).amazonaws.com/v2/styles/\(styleName)/descriptor?key=\(trackingViewModel.apiKey)&color-scheme=\(colorScheme)") {
+            DispatchQueue.main.async {
+                mapView.styleURL = styleURL
+            }
+        }
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.setZoomLevel(15, animated: true)
         mapView.showsUserLocation = true
@@ -43,7 +49,7 @@ struct MapView: UIViewRepresentable {
             super.init()
             self.trackingViewModel.mapViewDelegate = self
         }
-
+        
         func mapViewDidFinishRenderingMap(_ mapView: MLNMapView, fullyRendered: Bool) {
             if(fullyRendered) {
                 mapView.accessibilityIdentifier = "MapView"

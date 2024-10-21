@@ -1,13 +1,13 @@
 {
-  "originHash" : "8f4e7432cb72de3885bd1e995601e7af495c8abd6425b1712512cb83ec1c1e15",
+  "originHash" : "dd308245a3c3e715bcfa2ef4bceaec59ca4a28daa11f45f3689aef0741f9c44f",
   "pins" : [
     {
       "identity" : "amazon-location-mobile-auth-sdk-ios",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/aws-geospatial/amazon-location-mobile-auth-sdk-ios.git",
       "state" : {
-        "revision" : "6310a2e14c320ac87f3d31edbccaa1b46f2c8efd",
-        "version" : "0.2.0"
+        "revision" : "41936d44da2c1d81f92930d85fc304a4c5ef6323",
+        "version" : "0.3.2"
       }
     },
     {
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/aws-geospatial/amazon-location-mobile-tracking-sdk-ios",
       "state" : {
-        "revision" : "1bf2c6c744628d094041c9d432b0fecafc1b98c1",
-        "version" : "0.2.0"
+        "revision" : "cec26b7c2bd28859ce986287628b7fc95340ac2d",
+        "version" : "0.3.0"
       }
     },
     {
@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/awslabs/aws-crt-swift",
       "state" : {
-        "revision" : "b6380f683b31072d77b601c88674461c11bcad5a",
-        "version" : "0.30.0"
+        "revision" : "7b42e0343f28b3451aab20840dc670abd12790bd",
+        "version" : "0.36.0"
       }
     },
     {
@@ -33,8 +33,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/awslabs/aws-sdk-swift",
       "state" : {
-        "revision" : "14da8fcf13246e4f46cadc7a5ce291d839f3225d",
-        "version" : "0.45.0"
+        "revision" : "33bad12b221326b0f6505246cf8aecffa13adfcf",
+        "version" : "1.0.23"
       }
     },
     {
@@ -51,8 +51,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/maplibre/maplibre-gl-native-distribution",
       "state" : {
-        "revision" : "3f712ee1e65ef7ed6ca6db07658689aa3d185064",
-        "version" : "6.5.0"
+        "revision" : "f23db791d7b6f0329e3c6788d8e4152c24c52b6b",
+        "version" : "6.7.1"
       }
     },
     {
@@ -60,8 +60,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/smithy-lang/smithy-swift",
       "state" : {
-        "revision" : "a30764bf83af6876a3956aa394c838dcf2975cb3",
-        "version" : "0.50.0"
+        "revision" : "c236ded37f4199504a7eee6185f9058dfd3f2393",
+        "version" : "0.81.0"
       }
     },
     {
