@@ -10,7 +10,7 @@ struct QuickStartTrackingAppApp: App {
             UserDefaults.standard.synchronize()
         }
     }
-    @ObservedObject var trackingViewModel = TrackingViewModel(apiKey: Config.apiKey, apiKeyRegion: Config.apiKeyRegion, region: Config.region, identityPoolId: Config.identityPoolId, trackerName: Config.trackerName)
+    @ObservedObject var trackingViewModel = TrackingViewModel(apiKey: Config.apiKey, apiKeyRegion: Config.apiKeyRegion, identityPoolId: Config.identityPoolId, trackerName: Config.trackerName)
     var body: some Scene {
         WindowGroup {
             TrackingView(trackingViewModel: trackingViewModel)

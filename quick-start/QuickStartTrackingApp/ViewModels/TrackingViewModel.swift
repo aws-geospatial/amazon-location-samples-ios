@@ -13,7 +13,6 @@ final class TrackingViewModel : ObservableObject {
     @Published var trackingButtonIcon = "play.circle"
     @Published var apiKey : String
     @Published var apiKeyRegion : String
-    @Published var region : String
     @Published var identityPoolId : String
     @Published var trackerName : String
     @Published var showAlert = false
@@ -30,10 +29,9 @@ final class TrackingViewModel : ObservableObject {
     var lastGetTrackingTime: Date?
     var trackingActive: Bool
     
-    init(apiKey: String, apiKeyRegion: String, region: String, identityPoolId: String, trackerName: String) {
+    init(apiKey: String, apiKeyRegion: String, identityPoolId: String, trackerName: String) {
         self.apiKey = apiKey
         self.apiKeyRegion = apiKeyRegion
-        self.region = region
         self.identityPoolId = identityPoolId
         self.trackerName = trackerName
         self.authHelper = AuthHelper()

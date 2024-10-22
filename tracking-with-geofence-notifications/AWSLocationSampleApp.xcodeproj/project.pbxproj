@@ -35,7 +35,6 @@
 		F18CAC842B8C8E9900250F94 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F18CAC832B8C8E9900250F94 /* Localizable.xcstrings */; };
 		F18CAC882B8F600800250F94 /* TrackingFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18CAC872B8F600800250F94 /* TrackingFilterView.swift */; };
 		F18CAC8A2B90A0B500250F94 /* ClientConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18CAC892B90A0B500250F94 /* ClientConfigView.swift */; };
-		F19F0E192B7CD27E0052A3A5 /* AWSSignatureV4Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19F0E182B7CD27E0052A3A5 /* AWSSignatureV4Delegate.swift */; };
 		F1C4DC522CC1373300AA235A /* AwsCommonRuntimeKit in Frameworks */ = {isa = PBXBuildFile; productRef = F1C4DC512CC1373300AA235A /* AwsCommonRuntimeKit */; };
 		F1C4DC572CC25B3500AA235A /* AWSCognitoIdentity in Frameworks */ = {isa = PBXBuildFile; productRef = F1C4DC562CC25B3500AA235A /* AWSCognitoIdentity */; };
 		F1C4DC592CC25B3500AA235A /* AWSIoT in Frameworks */ = {isa = PBXBuildFile; productRef = F1C4DC582CC25B3500AA235A /* AWSIoT */; };
@@ -91,7 +90,6 @@
 		F18CAC832B8C8E9900250F94 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		F18CAC872B8F600800250F94 /* TrackingFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingFilterView.swift; sourceTree = "<group>"; };
 		F18CAC892B90A0B500250F94 /* ClientConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientConfigView.swift; sourceTree = "<group>"; };
-		F19F0E182B7CD27E0052A3A5 /* AWSSignatureV4Delegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSSignatureV4Delegate.swift; sourceTree = "<group>"; };
 		F1C4DC5D2CC265E700AA235A /* MqttIoTContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MqttIoTContext.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -248,7 +246,6 @@
 		F17B27652B7A39310026FAA6 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				F19F0E182B7CD27E0052A3A5 /* AWSSignatureV4Delegate.swift */,
 				F17B27662B7A39310026FAA6 /* SettingsDefaultValueHelper.swift */,
 				F17B27672B7A39310026FAA6 /* UserDefaultsHelper.swift */,
 				F17B27682B7A39310026FAA6 /* AlertPresenter.swift */,
@@ -396,7 +393,6 @@
 				F17B27232B6A606F0026FAA6 /* ContentView.swift in Sources */,
 				F17B27692B7A39310026FAA6 /* SettingsDefaultValueHelper.swift in Sources */,
 				F17B275C2B7A38F50026FAA6 /* MapView.swift in Sources */,
-				F19F0E192B7CD27E0052A3A5 /* AWSSignatureV4Delegate.swift in Sources */,
 				F17B276E2B7A39410026FAA6 /* StringConstants.swift in Sources */,
 				F18CAC802B87203D00250F94 /* TrackingViewModel.swift in Sources */,
 				F17B275F2B7A38F50026FAA6 /* TabsContentView.swift in Sources */,

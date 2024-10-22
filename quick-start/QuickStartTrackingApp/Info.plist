@@ -8,8 +8,6 @@
 	<string>$(API_KEY)</string>
 	<key>ApiKeyRegion</key>
 	<string>${API_KEY_REGION}</string>
-	<key>Region</key>
-	<string>${REGION}</string>
 	<key>TrackerName</key>
 	<string>${TRACKER_NAME}</string>
 </dict>
