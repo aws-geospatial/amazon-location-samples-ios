@@ -63,7 +63,7 @@ struct MapView: UIViewRepresentable {
         
         public init(_ control: MapView, authViewModel: AuthViewModel) {
             self.control = control
-
+            
             self.authViewModel = authViewModel
             super.init()
             self.authViewModel.delegate = self
@@ -81,7 +81,7 @@ struct MapView: UIViewRepresentable {
             guard let pointAnnotation = annotation as? MLNPointAnnotation else {
                 return nil
             }
-
+            
             let reuseIdentifier: String
             let color: UIColor
             if pointAnnotation.accessibilityLabel == "Tracking" {
@@ -95,9 +95,9 @@ struct MapView: UIViewRepresentable {
                 reuseIdentifier = "defaultDot"
                 color = .black
             }
-
+            
             var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier)
-
+            
             if annotationView == nil {
                 annotationView = MLNAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
                 let radius = pointAnnotation.accessibilityLabel == "Tracking" ? 20:10
@@ -120,7 +120,7 @@ struct MapView: UIViewRepresentable {
                     annotationView?.clipsToBounds = false // Important to see the shadow
                 }
             }
-
+            
             return annotationView
         }
         
@@ -158,7 +158,7 @@ struct MapView: UIViewRepresentable {
             let uniqueCoordinates = newTrackingPoints.filter { coordinate in
                 !checkIfTrackingAnnotationExists(on: mapView, at: coordinate)
             }
-
+            
             // Map the filtered coordinates to new MLNPointAnnotation objects
             let points = uniqueCoordinates.map { coordinate -> MLNPointAnnotation in
                 let point = MLNPointAnnotation()
@@ -183,16 +183,16 @@ struct MapView: UIViewRepresentable {
                 
                 var coordinates = outerRing.map { CLLocationCoordinate2D(latitude: $0[1], longitude: $0[0] ) }
                 
-                    let polygonFeature = MLNPolygonFeature(coordinates: &coordinates, count: UInt(coordinates.count))
-                    let sourceIdentifier = "geofence-source-\(geofence.geofenceId ?? UUID().uuidString)"
-                    let source = MLNShapeSource(identifier: sourceIdentifier, shape: polygonFeature, options: nil)
-                    mapView.style?.addSource(source)
-                    
-                    let layerIdentifier = "geofence-layer-\(geofence.geofenceId ?? UUID().uuidString)"
-                    let layer = MLNFillStyleLayer(identifier: layerIdentifier, source: source)
-                    layer.fillColor = NSExpression(forConstantValue: UIColor.blue.withAlphaComponent(0.5))
-                    layer.fillOutlineColor = NSExpression(forConstantValue: UIColor.blue)
-                    mapView.style?.addLayer(layer)
+                let polygonFeature = MLNPolygonFeature(coordinates: &coordinates, count: UInt(coordinates.count))
+                let sourceIdentifier = "geofence-source-\(geofence.geofenceId ?? UUID().uuidString)"
+                let source = MLNShapeSource(identifier: sourceIdentifier, shape: polygonFeature, options: nil)
+                mapView.style?.addSource(source)
+                
+                let layerIdentifier = "geofence-layer-\(geofence.geofenceId ?? UUID().uuidString)"
+                let layer = MLNFillStyleLayer(identifier: layerIdentifier, source: source)
+                layer.fillColor = NSExpression(forConstantValue: UIColor.blue.withAlphaComponent(0.5))
+                layer.fillOutlineColor = NSExpression(forConstantValue: UIColor.blue)
+                mapView.style?.addLayer(layer)
             }
         }
         

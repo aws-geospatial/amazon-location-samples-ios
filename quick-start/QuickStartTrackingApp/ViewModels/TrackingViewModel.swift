@@ -64,7 +64,7 @@ final class TrackingViewModel : ObservableObject {
         mapView.userTrackingMode = .follow
     }
     
-
+    
     func reverseGeocodeCenter(centerCoordinate: CLLocationCoordinate2D, marker: MLNPointAnnotation) {
         let position = [centerCoordinate.longitude, centerCoordinate.latitude]
         searchPositionAPI(position: position, marker: marker)
@@ -140,7 +140,7 @@ final class TrackingViewModel : ObservableObject {
         trackingButtonIcon = "play.circle"
         trackingActive = false
     }
-
+    
     func getTrackingPoints(nextToken: String? = nil) async throws {
         guard trackingActive else {
             return
@@ -156,14 +156,14 @@ final class TrackingViewModel : ObservableObject {
             
             lastGetTrackingTime = Date()
             let devicePositions = trackingData.devicePositions
-
+            
             let positions = devicePositions!.sorted { (position1, position2) -> Bool in
                 let timestamp1 = position1.sampleTime ?? Date()
                 let timestamp2 = position2.sampleTime ?? Date()
                 
                 return timestamp1 > timestamp2
             }
-
+            
             let trackingPoints = positions.compactMap { position -> CLLocationCoordinate2D? in
                 guard let latitude = position.position!.last, let longitude = position.position!.first else {
                     return nil

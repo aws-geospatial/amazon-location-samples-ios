@@ -36,7 +36,7 @@ final class AuthViewModel : ObservableObject {
     var loginDelegate: LoginViewModelOutputDelegate?
     var client:LocationTracker!
     var currentLocation: CLLocation!
-
+    
     var authHelper: AuthHelper
     var credentialsProvider: LocationCredentialsProvider?
     
@@ -83,7 +83,7 @@ final class AuthViewModel : ObservableObject {
         let region = AmazonLocationRegion.toRegionString(identityPoolId: identityPoolId)
         let cognitoIdentityClient = try AWSCognitoIdentity.CognitoIdentityClient(region: region)
         identityId = try await cognitoIdentityClient.getId(input: idInput).identityId
-
+        
         DispatchQueue.main.async {
             self.initializeClient()
             self.populateFilterValues()
@@ -123,7 +123,7 @@ final class AuthViewModel : ObservableObject {
             self.showAlert = true
         }
     }
-
+    
     func startTracking() async throws {
         do {
             print("Tracking Started...")
@@ -178,18 +178,18 @@ final class AuthViewModel : ObservableObject {
     
     var delegate: MapViewDelegate?
     var lastGetTrackingTime: Date?
-
+    
     func getTrackingPoints(nextToken: String? = nil) async throws {
         do {
-        guard UserDefaultsHelper.get(for: Bool.self, key: .trackingActive) ?? false else {
-            return
-        }
-        let startTime: Date = Date().addingTimeInterval(-86400)
-        var endTime: Date = Date()
-        if lastGetTrackingTime != nil {
-            endTime = lastGetTrackingTime!
-        }
-        let response = try await client?.getTrackerDeviceLocation(nextToken: nextToken, startTime: startTime, endTime: endTime)
+            guard UserDefaultsHelper.get(for: Bool.self, key: .trackingActive) ?? false else {
+                return
+            }
+            let startTime: Date = Date().addingTimeInterval(-86400)
+            var endTime: Date = Date()
+            if lastGetTrackingTime != nil {
+                endTime = lastGetTrackingTime!
+            }
+            let response = try await client?.getTrackerDeviceLocation(nextToken: nextToken, startTime: startTime, endTime: endTime)
             if let response = response {
                 lastGetTrackingTime = Date()
                 let positions = response.devicePositions!.sorted { (position1, position2) -> Bool in
@@ -212,12 +212,12 @@ final class AuthViewModel : ObservableObject {
                     try await getTrackingPoints(nextToken: nextToken)
                 }
             }
-            }
-            catch {
-                print("Error getting tracking locations: \(error)")
-            }
+        }
+        catch {
+            print("Error getting tracking locations: \(error)")
+        }
     }
-
+    
     func batchEvaluateGeofences() async throws {
         guard lastGetTrackingTime != nil, currentLocation != nil else {
             return
@@ -227,16 +227,16 @@ final class AuthViewModel : ObservableObject {
         deviceUpdate.deviceId = client.getDeviceId()
         deviceUpdate.position = [currentLocation.coordinate.longitude, currentLocation.coordinate.latitude]
         deviceUpdate.sampleTime = lastGetTrackingTime
-
+        
         let request = BatchEvaluateGeofencesRequest(collectionName: geofenceCollectionName, devicePositionUpdates: [deviceUpdate])
         print("device Id: \(String(describing: deviceUpdate.deviceId))")
         let response = try await client?.batchEvaluateGeofences(request: request)
         if response?.errors == nil || response?.errors?.count == 0 {
-               print("batchEvaluateGeofences success")
-               
+            print("batchEvaluateGeofences success")
+            
         }
         else if let error = response?.errors?[0] {
-                print("batchEvaluateGeofences error \(error)")
+            print("batchEvaluateGeofences error \(error)")
         }
     }
     
@@ -254,7 +254,7 @@ final class AuthViewModel : ObservableObject {
     
     func getGeofenceCollectionName(geofenceCollectionArn: String) -> String? {
         let components = geofenceCollectionArn.split(separator: ":")
-
+        
         if let lastComponent = components.last {
             let nameComponents = lastComponent.split(separator: "/")
             if nameComponents.count > 1, let collectionNameSubstring = nameComponents.last {
@@ -294,7 +294,7 @@ final class AuthViewModel : ObservableObject {
     func localizedDateString(from jsonStringDate: String) -> String {
         let isoFormatter = ISO8601DateFormatter()
         isoFormatter.formatOptions = [.withInternetDateTime]
-
+        
         guard let date = isoFormatter.date(from: jsonStringDate) else {
             fatalError("Invalid date format")
         }
@@ -303,10 +303,10 @@ final class AuthViewModel : ObservableObject {
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .medium
         dateFormatter.locale = Locale.current
-
+        
         return dateFormatter.string(from: date)
     }
-
+    
     func createClient(clientOptions: MqttClientOptions, iotContext: MqttIoTContext) throws -> Mqtt5Client {
         let clientOptionsWithCallbacks = MqttClientOptions(
             hostName: clientOptions.hostName,
@@ -334,7 +334,7 @@ final class AuthViewModel : ObservableObject {
             onLifecycleEventConnectionSuccessFn: iotContext.onLifecycleEventConnectionSuccess,
             onLifecycleEventConnectionFailureFn: iotContext.onLifecycleEventConnectionFailure,
             onLifecycleEventDisconnectionFn: iotContext.onLifecycleEventDisconnection)
-
+        
         let mqtt5Client = try Mqtt5Client(clientOptions: clientOptionsWithCallbacks)
         return mqtt5Client
     }
@@ -355,7 +355,7 @@ final class AuthViewModel : ObservableObject {
     var identityId: String? = nil
     private func createIoTClientIfNeeded() {
         let region = credentialsProvider!.getRegion()
-
+        
         guard let region = region,
               mqttClient == nil else {
             return
@@ -409,7 +409,7 @@ final class AuthViewModel : ObservableObject {
             print("Connection Success Timed out after 5 seconds")
         }
     }
-
+    
     func stopClient(client: Mqtt5Client, iotContext: MqttIoTContext) {
         backgroundQueue.async {
             do {

@@ -25,7 +25,7 @@ struct MapView: UIViewRepresentable {
         mapView.userTrackingMode = .follow
         context.coordinator.mlnMapView = mapView
         mapView.delegate = context.coordinator
-
+        
         mapView.logoView.isHidden = true
         context.coordinator.addCenterMarker()
         
@@ -61,14 +61,14 @@ struct MapView: UIViewRepresentable {
             guard let mlnMapView = mlnMapView else {
                 return
             }
-
+            
             let centerCoordinate = mlnMapView.centerCoordinate
             let marker = MLNPointAnnotation()
             marker.coordinate = centerCoordinate
             marker.accessibilityLabel = "CenterMarker"
             mlnMapView.addAnnotation(marker)
             centerMarker = marker
-
+            
             trackingViewModel.reverseGeocodeCenter(centerCoordinate: centerCoordinate, marker: marker)
         }
         
@@ -87,7 +87,7 @@ struct MapView: UIViewRepresentable {
             guard let pointAnnotation = annotation as? MLNPointAnnotation else {
                 return nil
             }
-
+            
             let reuseIdentifier: String
             var color: UIColor = .black
             if pointAnnotation.accessibilityLabel == "Tracking" {
@@ -99,9 +99,9 @@ struct MapView: UIViewRepresentable {
             } else {
                 reuseIdentifier = "DefaultAnnotationView"
             }
-
+            
             var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier)
-
+            
             if annotationView == nil {
                 if reuseIdentifier != "DefaultAnnotationView" {
                     annotationView = MLNAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
@@ -125,7 +125,7 @@ struct MapView: UIViewRepresentable {
                     return nil
                 }
             }
-
+            
             return annotationView
         }
         
@@ -160,11 +160,11 @@ struct MapView: UIViewRepresentable {
             guard let mapView = mlnMapView, let newTrackingPoints = trackingPoints, !newTrackingPoints.isEmpty else {
                 return
             }
-
+            
             let uniqueCoordinates = newTrackingPoints.filter { coordinate in
                 !checkIfTrackingAnnotationExists(on: mapView, at: coordinate)
             }
-
+            
             let points = uniqueCoordinates.map { coordinate -> MLNPointAnnotation in
                 let point = MLNPointAnnotation()
                 point.coordinate = coordinate
