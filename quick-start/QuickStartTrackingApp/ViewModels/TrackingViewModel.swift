@@ -2,24 +2,24 @@ import SwiftUI
 import AmazonLocationiOSAuthSDK
 import AmazonLocationiOSTrackingSDK
 import MapLibre
+import SmithyHTTPAuthAPI
 import AWSLocation
+import AWSGeoPlaces
 import os.log
 
 final class TrackingViewModel : ObservableObject {
     @Published var trackingButtonText = NSLocalizedString("StartTrackingLabel", comment: "")
     @Published var trackingButtonColor = Color.blue
     @Published var trackingButtonIcon = "play.circle"
-    @Published var region : String
-    @Published var mapName : String
-    @Published var indexName : String
+    @Published var apiKey : String
+    @Published var apiKeyRegion : String
     @Published var identityPoolId : String
     @Published var trackerName : String
     @Published var showAlert = false
     @Published var alertTitle = ""
     @Published var alertMessage = ""
     @Published var centerLabel = ""
-    @Published var mapSigningIntialised: Bool = false
-
+    
     var clientIntialised: Bool
     var client: LocationTracker!
     var authHelper: AuthHelper
@@ -28,12 +28,10 @@ final class TrackingViewModel : ObservableObject {
     var mapViewDelegate: MapViewDelegate?
     var lastGetTrackingTime: Date?
     var trackingActive: Bool
-    var signingDelegate: MLNOfflineStorageDelegate?
     
-    init(region: String, mapName: String, indexName: String, identityPoolId: String, trackerName: String) {
-        self.region = region
-        self.mapName = mapName
-        self.indexName = indexName
+    init(apiKey: String, apiKeyRegion: String, identityPoolId: String, trackerName: String) {
+        self.apiKey = apiKey
+        self.apiKeyRegion = apiKeyRegion
         self.identityPoolId = identityPoolId
         self.trackerName = trackerName
         self.authHelper = AuthHelper()
@@ -50,15 +48,6 @@ final class TrackingViewModel : ObservableObject {
             return
         }
         credentialsProvider = try await authHelper.authenticateWithCognitoIdentityPool(identityPoolId: identityPoolId)
-        mapViewSigning()
-    }
-    
-    func mapViewSigning() {
-        DispatchQueue.main.async { [self] in
-            signingDelegate = AWSSignatureV4Delegate(credentialsProvider: credentialsProvider!)
-            MLNOfflineStorage.shared.delegate = self.signingDelegate
-            mapSigningIntialised = true
-        }
     }
     
     func initializeClient() {
@@ -75,23 +64,38 @@ final class TrackingViewModel : ObservableObject {
         mapView.userTrackingMode = .follow
     }
     
-
+    
     func reverseGeocodeCenter(centerCoordinate: CLLocationCoordinate2D, marker: MLNPointAnnotation) {
         let position = [centerCoordinate.longitude, centerCoordinate.latitude]
         searchPositionAPI(position: position, marker: marker)
     }
     
     func searchPositionAPI(position: [Double], marker: MLNPointAnnotation) {
-        if let amazonClient = authHelper.getLocationClient() {
+        do {
+            let placesClient = try getPlacesLocationClient()
             Task {
-                let searchRequest = SearchPlaceIndexForPositionInput(indexName: indexName, language: "en" , maxResults: 10, position: position)
-                let searchResponse = try? await amazonClient.searchPosition(indexName: indexName, input: searchRequest)
+                let searchRequest = ReverseGeocodeInput(key: apiKey, language: "en", maxResults: 10, queryPosition: position, queryRadius: 100)
+                let searchResponse = try? await placesClient.reverseGeocode(input: searchRequest)
                 DispatchQueue.main.async {
-                    self.centerLabel = searchResponse?.results?.first?.place?.label ?? ""
+                    self.centerLabel = searchResponse?.resultItems?.first?.address?.label ?? ""
                     self.mlnMapView?.selectAnnotation(marker, animated: true, completionHandler: {})
                 }
             }
         }
+        catch {
+            showErrorAlertPopup(title: "Places location client", message: error.localizedDescription)
+        }
+    }
+    
+    func getPlacesLocationClient() throws -> GeoPlacesClient {
+        let resolver: AuthSchemeResolver = ApiKeyAuthSchemeResolver()
+        let signer = ApiKeySigner()
+        let authScheme: AuthScheme = ApiKeyAuthScheme(signer: signer)
+        let authSchemes: [AuthScheme] = [authScheme]
+        
+        let config = try GeoPlacesClient.GeoPlacesClientConfiguration(region: apiKeyRegion, authSchemes: authSchemes, authSchemeResolver: resolver)
+        let client = GeoPlacesClient(config: config)
+        return client
     }
     
     func showLocationDeniedRationale() {
@@ -136,7 +140,7 @@ final class TrackingViewModel : ObservableObject {
         trackingButtonIcon = "play.circle"
         trackingActive = false
     }
-
+    
     func getTrackingPoints(nextToken: String? = nil) async throws {
         guard trackingActive else {
             return
@@ -152,15 +156,14 @@ final class TrackingViewModel : ObservableObject {
             
             lastGetTrackingTime = Date()
             let devicePositions = trackingData.devicePositions
-
-            let positions = devicePositions!.sorted { (pos1: LocationClientTypes.DevicePosition, pos2: LocationClientTypes.DevicePosition) -> Bool in
-                guard let date1 = pos1.sampleTime,
-                      let date2 = pos2.sampleTime else {
-                    return false
-                }
-                return date1 < date2
+            
+            let positions = devicePositions!.sorted { (position1, position2) -> Bool in
+                let timestamp1 = position1.sampleTime ?? Date()
+                let timestamp2 = position2.sampleTime ?? Date()
+                
+                return timestamp1 > timestamp2
             }
-
+            
             let trackingPoints = positions.compactMap { position -> CLLocationCoordinate2D? in
                 guard let latitude = position.position!.last, let longitude = position.position!.first else {
                     return nil

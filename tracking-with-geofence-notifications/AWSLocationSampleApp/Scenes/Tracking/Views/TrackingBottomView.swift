@@ -10,7 +10,9 @@ struct TrackingBottomView: View {
 
                Button(action: {
                    if(authViewModel.trackingButtonText == "Start Tracking") {
-                       authViewModel.startTracking()
+                       Task {
+                           try await authViewModel.startTracking()
+                       }
                    } else {
                        authViewModel.stopTracking()
                    }

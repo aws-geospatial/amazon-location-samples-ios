@@ -9,6 +9,8 @@ import Foundation
 
 enum UserDefaultKeyType: String {
     case appState
+    case apiKey
+    case apiKeyRegion
     case identityPoolID
     case mapName
     case trackerName

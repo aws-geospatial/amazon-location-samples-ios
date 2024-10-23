@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>ApiKeyRegion</key>
+	<string>${API_KEY_REGION}</string>
+	<key>ApiKey</key>
+	<string>${API_KEY}</string>
 	<key>GeofenceARN</key>
 	<string>${GEOFENCE_ARN}</string>
 	<key>IdentityPoolId</key>

@@ -1,10 +1,10 @@
 {
-  "originHash" : "dd308245a3c3e715bcfa2ef4bceaec59ca4a28daa11f45f3689aef0741f9c44f",
+  "originHash" : "326ff6c5259d9f657d68c04231dc60a712881315d6ba3e609120341ebc7d720a",
   "pins" : [
     {
       "identity" : "amazon-location-mobile-auth-sdk-ios",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/aws-geospatial/amazon-location-mobile-auth-sdk-ios.git",
+      "location" : "https://github.com/aws-geospatial/amazon-location-mobile-auth-sdk-ios",
       "state" : {
         "revision" : "41936d44da2c1d81f92930d85fc304a4c5ef6323",
         "version" : "0.3.2"
@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/awslabs/aws-crt-swift",
       "state" : {
-        "revision" : "7b42e0343f28b3451aab20840dc670abd12790bd",
-        "version" : "0.36.0"
+        "branch" : "mqtt_test_app",
+        "revision" : "e7e603d3aadd1749b3e5cc554832ab337fdfd8f3"
       }
     },
     {
@@ -33,8 +33,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/awslabs/aws-sdk-swift",
       "state" : {
-        "revision" : "33bad12b221326b0f6505246cf8aecffa13adfcf",
-        "version" : "1.0.23"
+        "revision" : "d1f59c3de3a7ff39efa5f5ee0dedd836de9319d4",
+        "version" : "1.0.22"
       }
     },
     {
@@ -69,8 +69,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-log.git",
       "state" : {
-        "revision" : "e97a6fcb1ab07462881ac165fdbb37f067e205d5",
-        "version" : "1.5.4"
+        "revision" : "9cb486020ebf03bfa5b5df985387a14a98744537",
+        "version" : "1.6.1"
       }
     }
   ],

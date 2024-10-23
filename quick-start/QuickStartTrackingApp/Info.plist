@@ -4,12 +4,10 @@
 <dict>
 	<key>IdentityPoolId</key>
 	<string>${IDENTITY_POOL_ID}</string>
-	<key>IndexName</key>
-	<string>${INDEX_NAME}</string>
-	<key>MapName</key>
-	<string>$(MAP_NAME)</string>
-	<key>Region</key>
-	<string>${REGION}</string>
+	<key>ApiKey</key>
+	<string>$(API_KEY)</string>
+	<key>ApiKeyRegion</key>
+	<string>${API_KEY_REGION}</string>
 	<key>TrackerName</key>
 	<string>${TRACKER_NAME}</string>
 </dict>

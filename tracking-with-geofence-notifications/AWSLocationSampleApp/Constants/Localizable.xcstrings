@@ -12,6 +12,12 @@
         }
       }
     },
+    "API Key" : {
+
+    },
+    "API Key Region" : {
+
+    },
     "Cancel" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -180,9 +186,6 @@
           }
         }
       }
-    },
-    "Map Name" : {
-
     },
     "NotAllFieldsAreConfigured" : {
       "extractionState" : "manual",
