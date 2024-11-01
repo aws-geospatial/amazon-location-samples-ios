@@ -6,7 +6,7 @@ struct TrackingBottomView: View {
            Button(action: {
                Task {
                    if(trackingViewModel.trackingButtonText == NSLocalizedString("StartTrackingLabel", comment: "")) {
-                       trackingViewModel.startTracking()
+                       try await trackingViewModel.startTracking()
                    } else {
                        trackingViewModel.stopTracking()
                    }

@@ -37,8 +37,8 @@ final class AuthViewModel : ObservableObject {
     var client:LocationTracker!
     var currentLocation: CLLocation!
     
-    var authHelper: AuthHelper
-    var credentialsProvider: LocationCredentialsProvider?
+    var authHelper: AuthHelper?
+    var locationClient: LocationClient?
     
     var mqttClient: Mqtt5Client?
     var mqttIoTContext: MqttIoTContext?
@@ -65,7 +65,6 @@ final class AuthViewModel : ObservableObject {
         self.trackerName = trackerName
         self.geofenceCollectionArn = geofenceCollectionArn
         self.websocketUrl = websocketUrl
-        self.authHelper = AuthHelper()
     }
     
     func authWithCognito(identityPoolId: String?) async throws {
@@ -78,11 +77,14 @@ final class AuthViewModel : ObservableObject {
             }
             return
         }
-        credentialsProvider = try await authHelper.authenticateWithCognitoIdentityPool(identityPoolId: identityPoolId)
+        
+        self.authHelper = try await AuthHelper.withIdentityPoolId(identityPoolId: identityPoolId)
         let idInput = GetIdInput(identityPoolId: identityPoolId)
         let region = AmazonLocationRegion.toRegionString(identityPoolId: identityPoolId)
         let cognitoIdentityClient = try AWSCognitoIdentity.CognitoIdentityClient(region: region)
         identityId = try await cognitoIdentityClient.getId(input: idInput).identityId
+        
+        self.client = try await LocationTracker(identityPoolId: identityPoolId, trackerName: trackerName)
         
         DispatchQueue.main.async {
             self.initializeClient()
@@ -91,7 +93,7 @@ final class AuthViewModel : ObservableObject {
     }
     
     func initializeClient() {
-        client = LocationTracker(provider: credentialsProvider!, trackerName: trackerName)
+        locationClient = LocationClient(config: (self.authHelper?.getLocationClientConfig())!)
         clientIntialised = true
     }
     
@@ -223,14 +225,15 @@ final class AuthViewModel : ObservableObject {
             return
         }
         guard let geofenceCollectionName = getGeofenceCollectionName(geofenceCollectionArn: geofenceCollectionArn) else { return }
-        let deviceUpdate = DevicePositionUpdate()
-        deviceUpdate.deviceId = client.getDeviceId()
-        deviceUpdate.position = [currentLocation.coordinate.longitude, currentLocation.coordinate.latitude]
-        deviceUpdate.sampleTime = lastGetTrackingTime
+        let deviceUpdate = LocationClientTypes.DevicePositionUpdate(
+            deviceId: client.getDeviceId(),
+            position: [currentLocation.coordinate.longitude, currentLocation.coordinate.latitude],
+            sampleTime: lastGetTrackingTime
+        )
         
-        let request = BatchEvaluateGeofencesRequest(collectionName: geofenceCollectionName, devicePositionUpdates: [deviceUpdate])
+        let input = BatchEvaluateGeofencesInput(collectionName: geofenceCollectionName, devicePositionUpdates: [deviceUpdate])
         print("device Id: \(String(describing: deviceUpdate.deviceId))")
-        let response = try await client?.batchEvaluateGeofences(request: request)
+        let response = try await client?.batchEvaluateGeofences(input: input)
         if response?.errors == nil || response?.errors?.count == 0 {
             print("batchEvaluateGeofences success")
             
@@ -242,11 +245,11 @@ final class AuthViewModel : ObservableObject {
     
     func fetchGeofenceList() async throws {
         guard let geofenceCollectionName = getGeofenceCollectionName(geofenceCollectionArn: geofenceCollectionArn) else { return }
-        let locationClient = authHelper.getLocationClient()?.locationClient
+
         let input = ListGeofencesInput(collectionName: geofenceCollectionName)
-        let response = try await locationClient?.listGeofences(input: input)
+        let response = try await self.locationClient!.listGeofences(input: input)
         DispatchQueue.main.async {
-            if let geofences = response?.entries {
+            if let geofences = response.entries {
                 self.delegate?.displayGeofences(geofences: geofences)
             }
         }
@@ -340,24 +343,22 @@ final class AuthViewModel : ObservableObject {
     }
     
     private func subscribeToAWSNotifications() {
-        backgroundQueue.async {
-            do {
-                self.createIoTClientIfNeeded()
-                if self.mqttClient != nil {
-                    try self.connectClient(client: self.mqttClient!, iotContext: self.mqttIoTContext!)
-                }
+        do {
+            self.createIoTClientIfNeeded()
+            if self.mqttClient != nil {
+                try self.connectClient(client: self.mqttClient!, iotContext: self.mqttIoTContext!)
             }
-            catch {
-                print(error)
-            }
+        }
+        catch {
+            print(error)
         }
     }
     var identityId: String? = nil
     private func createIoTClientIfNeeded() {
-        let region = credentialsProvider!.getRegion()
+        let region = AmazonLocationRegion.toRegionString(identityPoolId: identityPoolId)
+        let cognitoProvider = AmazonLocationCognitoCredentialsProvider(identityPoolId: identityPoolId, region: region)
         
-        guard let region = region,
-              mqttClient == nil else {
+        guard mqttClient == nil else {
             return
         }
         do {
@@ -378,7 +379,7 @@ final class AuthViewModel : ObservableObject {
                             let description = String(format: NSLocalizedString("GeofenceNotificationDescription", comment: ""),  model.geofenceId, eventText, self.localizedDateString(from: model.eventTime))
                             NotificationManager.scheduleNotification(title: title, body: description)
                         }
-                    } }, topicName: "\(deviceId)/tracker", cognitoCredentialsProvider: credentialsProvider!.getCognitoProvider()!, region: region)
+                    } }, topicName: "\(deviceId)/tracker", cognitoCredentialsProvider: cognitoProvider, region: region)
                 let ConnectPacket = MqttConnectOptions(keepAliveInterval: 60000, clientId: identityId)
                 let tlsOptions = TLSContextOptions.makeDefault()
                 let tlsContext = try TLSContext(options: tlsOptions, mode: .client)
@@ -411,16 +412,14 @@ final class AuthViewModel : ObservableObject {
     }
     
     func stopClient(client: Mqtt5Client, iotContext: MqttIoTContext) {
-        backgroundQueue.async {
-            do {
-                try client.stop()
-                if iotContext.semaphoreStopped.wait(timeout: .now() + 5) == .timedOut {
-                    print("Stop timed out after 5 seconds")
-                }
+        do {
+            try client.stop()
+            if iotContext.semaphoreStopped.wait(timeout: .now() + 5) == .timedOut {
+                print("Stop timed out after 5 seconds")
             }
-            catch {
-                print("Failed to stop client: \(error.localizedDescription)")
-            }
+        }
+        catch {
+            print("Failed to stop client: \(error.localizedDescription)")
         }
     }
     
