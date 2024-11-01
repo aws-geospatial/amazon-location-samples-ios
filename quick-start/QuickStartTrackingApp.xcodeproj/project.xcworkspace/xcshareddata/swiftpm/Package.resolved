@@ -1,13 +1,12 @@
 {
-  "originHash" : "dd308245a3c3e715bcfa2ef4bceaec59ca4a28daa11f45f3689aef0741f9c44f",
   "pins" : [
     {
       "identity" : "amazon-location-mobile-auth-sdk-ios",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/aws-geospatial/amazon-location-mobile-auth-sdk-ios.git",
       "state" : {
-        "revision" : "41936d44da2c1d81f92930d85fc304a4c5ef6323",
-        "version" : "0.3.2"
+        "revision" : "787edfff4d6cc7573dc351d3bc851675114838e6",
+        "version" : "1.0.0"
       }
     },
     {
@@ -15,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/aws-geospatial/amazon-location-mobile-tracking-sdk-ios",
       "state" : {
-        "revision" : "cec26b7c2bd28859ce986287628b7fc95340ac2d",
-        "version" : "0.3.0"
+        "revision" : "e1ba9b976b959827ea34fe21ee01895c4f67505e",
+        "version" : "1.0.0"
       }
     },
     {
@@ -24,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/awslabs/aws-crt-swift",
       "state" : {
-        "revision" : "7b42e0343f28b3451aab20840dc670abd12790bd",
-        "version" : "0.36.0"
+        "revision" : "3f844bef042cc0a4c3381f7090414ce3f9a7e935",
+        "version" : "0.37.0"
       }
     },
     {
@@ -33,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/awslabs/aws-sdk-swift",
       "state" : {
-        "revision" : "33bad12b221326b0f6505246cf8aecffa13adfcf",
-        "version" : "1.0.23"
+        "revision" : "877c9b869b16255df74078d470ce06d370a134d0",
+        "version" : "1.0.31"
       }
     },
     {
@@ -60,8 +59,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/smithy-lang/smithy-swift",
       "state" : {
-        "revision" : "c236ded37f4199504a7eee6185f9058dfd3f2393",
-        "version" : "0.81.0"
+        "revision" : "0d4d3eae8cfb04f3e0cbc4e7740e7344cc9fac55",
+        "version" : "0.87.0"
       }
     },
     {
@@ -74,5 +73,5 @@
       }
     }
   ],
-  "version" : 3
+  "version" : 2
 }

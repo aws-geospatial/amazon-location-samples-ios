@@ -19,6 +19,15 @@ struct TrackingView: View {
             )
         }
         .onAppear() {
+            Task {
+                do {
+                    try await trackingViewModel.initializeGeoPlacesClient()
+                }
+                catch {
+                    trackingViewModel.showErrorAlertPopup(title: "Error", message: "Error in authentication with API key: \(error.localizedDescription)")
+                }
+            }
+
             if !trackingViewModel.identityPoolId.isEmpty {
                 Task {
                     do {

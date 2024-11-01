@@ -22,8 +22,8 @@ final class TrackingViewModel : ObservableObject {
     
     var clientIntialised: Bool
     var client: LocationTracker!
-    var authHelper: AuthHelper
-    var credentialsProvider: LocationCredentialsProvider?
+    var geoPlacesClient: GeoPlacesClient!
+    var authHelper: AuthHelper!
     var mlnMapView: MLNMapView?
     var mapViewDelegate: MapViewDelegate?
     var lastGetTrackingTime: Date?
@@ -34,7 +34,6 @@ final class TrackingViewModel : ObservableObject {
         self.apiKeyRegion = apiKeyRegion
         self.identityPoolId = identityPoolId
         self.trackerName = trackerName
-        self.authHelper = AuthHelper()
         self.trackingActive = false
         self.clientIntialised = false
     }
@@ -47,11 +46,17 @@ final class TrackingViewModel : ObservableObject {
             showAlert = true
             return
         }
-        credentialsProvider = try await authHelper.authenticateWithCognitoIdentityPool(identityPoolId: identityPoolId)
+        
+        self.identityPoolId = identityPoolId
     }
     
-    func initializeClient() {
-        client = LocationTracker(provider: credentialsProvider!, trackerName: trackerName)
+    func initializeGeoPlacesClient() async throws {
+        authHelper = try await AuthHelper.withApiKey(apiKey: apiKey, region: apiKeyRegion)
+        geoPlacesClient = GeoPlacesClient(config: authHelper.getGeoPlacesClientConfig())
+    }
+    
+    func initializeTracker() async throws {
+        client = try await LocationTracker(identityPoolId: identityPoolId, trackerName: trackerName)
         clientIntialised = true
     }
     
@@ -71,13 +76,17 @@ final class TrackingViewModel : ObservableObject {
     }
     
     func searchPositionAPI(position: [Double], marker: MLNPointAnnotation) {
+        // This gets called periodically, but the client is created as
+        if (geoPlacesClient == nil) {
+            return
+        }
+
         do {
-            let placesClient = try getPlacesLocationClient()
             Task {
-                let searchRequest = ReverseGeocodeInput(key: apiKey, language: "en", maxResults: 10, queryPosition: position, queryRadius: 100)
-                let searchResponse = try? await placesClient.reverseGeocode(input: searchRequest)
+                let searchRequest = ReverseGeocodeInput(language: "en", maxResults: 10, queryPosition: position, queryRadius: 100)
+                let searchResponse = try await geoPlacesClient.reverseGeocode(input: searchRequest)
                 DispatchQueue.main.async {
-                    self.centerLabel = searchResponse?.resultItems?.first?.address?.label ?? ""
+                    self.centerLabel = searchResponse.resultItems?.first?.address?.label ?? ""
                     self.mlnMapView?.selectAnnotation(marker, animated: true, completionHandler: {})
                 }
             }
@@ -85,17 +94,6 @@ final class TrackingViewModel : ObservableObject {
         catch {
             showErrorAlertPopup(title: "Places location client", message: error.localizedDescription)
         }
-    }
-    
-    func getPlacesLocationClient() throws -> GeoPlacesClient {
-        let resolver: AuthSchemeResolver = ApiKeyAuthSchemeResolver()
-        let signer = ApiKeySigner()
-        let authScheme: AuthScheme = ApiKeyAuthScheme(signer: signer)
-        let authSchemes: [AuthScheme] = [authScheme]
-        
-        let config = try GeoPlacesClient.GeoPlacesClientConfiguration(region: apiKeyRegion, authSchemes: authSchemes, authSchemeResolver: resolver)
-        let client = GeoPlacesClient(config: config)
-        return client
     }
     
     func showLocationDeniedRationale() {
@@ -112,11 +110,11 @@ final class TrackingViewModel : ObservableObject {
     }
     
     // Required in info.plist: Privacy - Location When In Use Usage Description
-    func startTracking() {
+    func startTracking() async throws {
         do {
             print("Tracking Started...")
             if(client == nil) {
-                initializeClient()
+                try await initializeTracker()
             }
             try client.startTracking()
             DispatchQueue.main.async { [self] in
