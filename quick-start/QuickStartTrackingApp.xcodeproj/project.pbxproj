@@ -16,10 +16,9 @@
 		F11DE9382BD6BC860047E398 /* TrackingBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11DE9372BD6BC860047E398 /* TrackingBottomView.swift */; };
 		F11DE93D2BD7F3040047E398 /* CenterAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11DE93C2BD7F3040047E398 /* CenterAddressView.swift */; };
 		F11DE93F2BD805000047E398 /* UserLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11DE93E2BD805000047E398 /* UserLocationView.swift */; };
-		F120B5662C19CDCA007A55F4 /* AmazonLocationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F120B5652C19CDCA007A55F4 /* AmazonLocationClient.swift */; };
 		F1B70F342C0DE7A700649A83 /* AwsCommonRuntimeKit in Frameworks */ = {isa = PBXBuildFile; productRef = F1B70F332C0DE7A700649A83 /* AwsCommonRuntimeKit */; };
 		F1B70F362C0DE7A700649A83 /* Elasticurl in Frameworks */ = {isa = PBXBuildFile; productRef = F1B70F352C0DE7A700649A83 /* Elasticurl */; };
-		F1C6739E2C0872300055EB97 /* AWSSignatureV4Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C6739D2C0872300055EB97 /* AWSSignatureV4Delegate.swift */; };
+		F1C4DC622CC6CA1400AA235A /* AWSGeoPlaces in Frameworks */ = {isa = PBXBuildFile; productRef = F1C4DC612CC6CA1400AA235A /* AWSGeoPlaces */; };
 		F1E9605C2BCF697900192ACB /* QuickStartTrackingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E9605B2BCF697900192ACB /* QuickStartTrackingApp.swift */; };
 		F1E960602BCF697B00192ACB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1E9605F2BCF697B00192ACB /* Assets.xcassets */; };
 		F1E960632BCF697B00192ACB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1E960622BCF697B00192ACB /* Preview Assets.xcassets */; };
@@ -58,8 +57,6 @@
 		F11DE9372BD6BC860047E398 /* TrackingBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingBottomView.swift; sourceTree = "<group>"; };
 		F11DE93C2BD7F3040047E398 /* CenterAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterAddressView.swift; sourceTree = "<group>"; };
 		F11DE93E2BD805000047E398 /* UserLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationView.swift; sourceTree = "<group>"; };
-		F120B5652C19CDCA007A55F4 /* AmazonLocationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazonLocationClient.swift; sourceTree = "<group>"; };
-		F1C6739D2C0872300055EB97 /* AWSSignatureV4Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSSignatureV4Delegate.swift; sourceTree = "<group>"; };
 		F1E960582BCF697900192ACB /* QuickStartTrackingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickStartTrackingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1E9605B2BCF697900192ACB /* QuickStartTrackingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickStartTrackingApp.swift; sourceTree = "<group>"; };
 		F1E9605F2BCF697B00192ACB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -81,6 +78,7 @@
 			files = (
 				7CB6035D2C0A6F2F00852261 /* AWSLocation in Frameworks */,
 				F11DE91C2BD25EFC0047E398 /* MapLibre in Frameworks */,
+				F1C4DC622CC6CA1400AA235A /* AWSGeoPlaces in Frameworks */,
 				7C139D172C2194EC001AA56E /* AmazonLocationiOSTrackingSDK in Frameworks */,
 				F1B70F362C0DE7A700649A83 /* Elasticurl in Frameworks */,
 				F1B70F342C0DE7A700649A83 /* AwsCommonRuntimeKit in Frameworks */,
@@ -191,8 +189,6 @@
 			isa = PBXGroup;
 			children = (
 				F1E960962BCFDC7F00192ACB /* TrackingViewModel.swift */,
-				F1C6739D2C0872300055EB97 /* AWSSignatureV4Delegate.swift */,
-				F120B5652C19CDCA007A55F4 /* AmazonLocationClient.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -219,6 +215,7 @@
 				F1B70F332C0DE7A700649A83 /* AwsCommonRuntimeKit */,
 				F1B70F352C0DE7A700649A83 /* Elasticurl */,
 				7C139D162C2194EC001AA56E /* AmazonLocationiOSTrackingSDK */,
+				F1C4DC612CC6CA1400AA235A /* AWSGeoPlaces */,
 			);
 			productName = QuickStartTrackingApp;
 			productReference = F1E960582BCF697900192ACB /* QuickStartTrackingApp.app */;
@@ -268,7 +265,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1530;
-				LastUpgradeCheck = 1530;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					F1E960572BCF697900192ACB = {
 						CreatedOnToolsVersion = 15.3;
@@ -341,14 +338,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11DE9382BD6BC860047E398 /* TrackingBottomView.swift in Sources */,
-				F120B5662C19CDCA007A55F4 /* AmazonLocationClient.swift in Sources */,
 				F1E9609C2BD004F000192ACB /* TrackingView.swift in Sources */,
 				F11DE93F2BD805000047E398 /* UserLocationView.swift in Sources */,
 				F11DE93D2BD7F3040047E398 /* CenterAddressView.swift in Sources */,
 				F1E9608A2BCF6AEE00192ACB /* Config.swift in Sources */,
 				F1E9605C2BCF697900192ACB /* QuickStartTrackingApp.swift in Sources */,
 				F1E960992BCFE77300192ACB /* MapView.swift in Sources */,
-				F1C6739E2C0872300055EB97 /* AWSSignatureV4Delegate.swift in Sources */,
 				F1E960972BCFDC7F00192ACB /* TrackingViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -471,6 +466,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -488,7 +484,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F11DE9242BD2A0070047E398 /* TestConfig.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -508,7 +503,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F11DE9242BD2A0070047E398 /* TestConfig.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -664,6 +658,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -697,6 +692,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -713,7 +709,6 @@
 		F1E960802BCF697B00192ACB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -732,7 +727,6 @@
 		F1E960812BCF697B00192ACB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -751,7 +745,6 @@
 		F1E960832BCF697B00192ACB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -769,7 +762,6 @@
 		F1E960842BCF697B00192ACB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -835,7 +827,7 @@
 			repositoryURL = "https://github.com/aws-geospatial/amazon-location-mobile-tracking-sdk-ios";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.2.0;
+				minimumVersion = 1.0.0;
 			};
 		};
 		7CB6035B2C0A6F2F00852261 /* XCRemoteSwiftPackageReference "aws-sdk-swift" */ = {
@@ -843,7 +835,7 @@
 			repositoryURL = "https://github.com/awslabs/aws-sdk-swift";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.44.0;
+				minimumVersion = 1.0.31;
 			};
 		};
 		F11DE91A2BD25EFC0047E398 /* XCRemoteSwiftPackageReference "maplibre-gl-native-distribution" */ = {
@@ -851,7 +843,7 @@
 			repositoryURL = "https://github.com/maplibre/maplibre-gl-native-distribution";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 6.3.3;
+				minimumVersion = 6.7.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -879,6 +871,10 @@
 		F1B70F352C0DE7A700649A83 /* Elasticurl */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Elasticurl;
+		};
+		F1C4DC612CC6CA1400AA235A /* AWSGeoPlaces */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AWSGeoPlaces;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

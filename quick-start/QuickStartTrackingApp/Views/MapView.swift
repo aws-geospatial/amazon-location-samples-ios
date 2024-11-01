@@ -11,15 +11,21 @@ struct MapView: UIViewRepresentable {
     }
     
     func makeUIView(context: Context) -> MLNMapView {
-        let styleURL = URL(string: "https://maps.geo.\(trackingViewModel.region).amazonaws.com/maps/v0/maps/\(trackingViewModel.mapName)/style-descriptor")
-        let mapView = MLNMapView(frame: .zero, styleURL: styleURL)
+        let mapView = MLNMapView(frame: .zero)
+        let styleName = "Standard"
+        let colorScheme = "Light"  // You can change this to Dark if needed
+        if let styleURL = URL(string: "https://maps.geo.\(trackingViewModel.apiKeyRegion).amazonaws.com/v2/styles/\(styleName)/descriptor?key=\(trackingViewModel.apiKey)&color-scheme=\(colorScheme)") {
+            DispatchQueue.main.async {
+                mapView.styleURL = styleURL
+            }
+        }
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.setZoomLevel(15, animated: true)
         mapView.showsUserLocation = true
         mapView.userTrackingMode = .follow
         context.coordinator.mlnMapView = mapView
         mapView.delegate = context.coordinator
-
+        
         mapView.logoView.isHidden = true
         context.coordinator.addCenterMarker()
         
@@ -43,7 +49,7 @@ struct MapView: UIViewRepresentable {
             super.init()
             self.trackingViewModel.mapViewDelegate = self
         }
-
+        
         func mapViewDidFinishRenderingMap(_ mapView: MLNMapView, fullyRendered: Bool) {
             if(fullyRendered) {
                 mapView.accessibilityIdentifier = "MapView"
@@ -55,14 +61,14 @@ struct MapView: UIViewRepresentable {
             guard let mlnMapView = mlnMapView else {
                 return
             }
-
+            
             let centerCoordinate = mlnMapView.centerCoordinate
             let marker = MLNPointAnnotation()
             marker.coordinate = centerCoordinate
             marker.accessibilityLabel = "CenterMarker"
             mlnMapView.addAnnotation(marker)
             centerMarker = marker
-
+            
             trackingViewModel.reverseGeocodeCenter(centerCoordinate: centerCoordinate, marker: marker)
         }
         
@@ -81,7 +87,7 @@ struct MapView: UIViewRepresentable {
             guard let pointAnnotation = annotation as? MLNPointAnnotation else {
                 return nil
             }
-
+            
             let reuseIdentifier: String
             var color: UIColor = .black
             if pointAnnotation.accessibilityLabel == "Tracking" {
@@ -93,9 +99,9 @@ struct MapView: UIViewRepresentable {
             } else {
                 reuseIdentifier = "DefaultAnnotationView"
             }
-
+            
             var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier)
-
+            
             if annotationView == nil {
                 if reuseIdentifier != "DefaultAnnotationView" {
                     annotationView = MLNAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
@@ -119,7 +125,7 @@ struct MapView: UIViewRepresentable {
                     return nil
                 }
             }
-
+            
             return annotationView
         }
         
@@ -154,11 +160,11 @@ struct MapView: UIViewRepresentable {
             guard let mapView = mlnMapView, let newTrackingPoints = trackingPoints, !newTrackingPoints.isEmpty else {
                 return
             }
-
+            
             let uniqueCoordinates = newTrackingPoints.filter { coordinate in
                 !checkIfTrackingAnnotationExists(on: mapView, at: coordinate)
             }
-
+            
             let points = uniqueCoordinates.map { coordinate -> MLNPointAnnotation in
                 let point = MLNPointAnnotation()
                 point.coordinate = coordinate

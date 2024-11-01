@@ -1,6 +1,8 @@
 import Foundation
 
 struct CustomConnectionModel: Codable {
+    var apiKey: String
+    var apiKeyRegion: String
     var identityPoolId: String
     var userPoolClientId: String
     var userPoolId: String

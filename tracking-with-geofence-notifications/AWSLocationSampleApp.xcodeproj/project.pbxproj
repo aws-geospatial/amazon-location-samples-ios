@@ -7,10 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7CF5599A2BC80FBD00F1941A /* TestConfigTemplate.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 7CF559992BC80FBD00F1941A /* TestConfigTemplate.xcconfig */; };
 		7CF5599E2BC829E100F1941A /* XCTestCase+toggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF5599D2BC829E100F1941A /* XCTestCase+toggle.swift */; };
-		7CF559A32BC82D9600F1941A /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 7CF559A22BC82D9600F1941A /* Config.xcconfig */; };
-		7CF559A52BC82DA400F1941A /* TestConfig.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 7CF559A42BC82DA400F1941A /* TestConfig.xcconfig */; };
 		7CF559A92BC848C000F1941A /* ConfigUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF559A82BC848C000F1941A /* ConfigUITests.swift */; };
 		7CF559AB2BC849C400F1941A /* TrackingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF559AA2BC849C400F1941A /* TrackingUITests.swift */; };
 		F109EE202B7FA48A00297D8F /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F109EE1F2B7FA48A00297D8F /* NotificationManager.swift */; };
@@ -32,18 +29,17 @@
 		F17B276A2B7A39310026FAA6 /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17B27672B7A39310026FAA6 /* UserDefaultsHelper.swift */; };
 		F17B276B2B7A39310026FAA6 /* AlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17B27682B7A39310026FAA6 /* AlertPresenter.swift */; };
 		F17B276E2B7A39410026FAA6 /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17B276D2B7A39410026FAA6 /* StringConstants.swift */; };
-		F17B27712B7A3CB70026FAA6 /* AWSCognitoIdentityProviderASF in Frameworks */ = {isa = PBXBuildFile; productRef = F17B27702B7A3CB70026FAA6 /* AWSCognitoIdentityProviderASF */; };
-		F17B27732B7A3CB70026FAA6 /* AWSCore in Frameworks */ = {isa = PBXBuildFile; productRef = F17B27722B7A3CB70026FAA6 /* AWSCore */; };
-		F17B27752B7A3CB70026FAA6 /* AWSLocationXCF in Frameworks */ = {isa = PBXBuildFile; productRef = F17B27742B7A3CB70026FAA6 /* AWSLocationXCF */; };
-		F17B27772B7A3CB70026FAA6 /* AWSMobileClientXCF in Frameworks */ = {isa = PBXBuildFile; productRef = F17B27762B7A3CB70026FAA6 /* AWSMobileClientXCF */; };
 		F17B27832B7A442E0026FAA6 /* MapLibre in Frameworks */ = {isa = PBXBuildFile; productRef = F17B27822B7A442E0026FAA6 /* MapLibre */; };
-		F18CAC7E2B871C2800250F94 /* AWSIoT in Frameworks */ = {isa = PBXBuildFile; productRef = F18CAC7D2B871C2800250F94 /* AWSIoT */; };
 		F18CAC802B87203D00250F94 /* TrackingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18CAC7F2B87203D00250F94 /* TrackingViewModel.swift */; };
 		F18CAC822B87223200250F94 /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18CAC812B87223200250F94 /* Notification+Extension.swift */; };
 		F18CAC842B8C8E9900250F94 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F18CAC832B8C8E9900250F94 /* Localizable.xcstrings */; };
 		F18CAC882B8F600800250F94 /* TrackingFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18CAC872B8F600800250F94 /* TrackingFilterView.swift */; };
 		F18CAC8A2B90A0B500250F94 /* ClientConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18CAC892B90A0B500250F94 /* ClientConfigView.swift */; };
-		F19F0E192B7CD27E0052A3A5 /* AWSSignatureV4Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19F0E182B7CD27E0052A3A5 /* AWSSignatureV4Delegate.swift */; };
+		F1C4DC522CC1373300AA235A /* AwsCommonRuntimeKit in Frameworks */ = {isa = PBXBuildFile; productRef = F1C4DC512CC1373300AA235A /* AwsCommonRuntimeKit */; };
+		F1C4DC572CC25B3500AA235A /* AWSCognitoIdentity in Frameworks */ = {isa = PBXBuildFile; productRef = F1C4DC562CC25B3500AA235A /* AWSCognitoIdentity */; };
+		F1C4DC592CC25B3500AA235A /* AWSIoT in Frameworks */ = {isa = PBXBuildFile; productRef = F1C4DC582CC25B3500AA235A /* AWSIoT */; };
+		F1C4DC5B2CC25B3500AA235A /* AWSIoTEvents in Frameworks */ = {isa = PBXBuildFile; productRef = F1C4DC5A2CC25B3500AA235A /* AWSIoTEvents */; };
+		F1C4DC5E2CC265E700AA235A /* MqttIoTContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C4DC5D2CC265E700AA235A /* MqttIoTContext.swift */; };
 		F1E960482BC4149400192ACB /* AmazonLocationiOSTrackingSDK in Frameworks */ = {isa = PBXBuildFile; productRef = F1E960472BC4149400192ACB /* AmazonLocationiOSTrackingSDK */; };
 /* End PBXBuildFile section */
 
@@ -94,7 +90,7 @@
 		F18CAC832B8C8E9900250F94 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		F18CAC872B8F600800250F94 /* TrackingFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingFilterView.swift; sourceTree = "<group>"; };
 		F18CAC892B90A0B500250F94 /* ClientConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientConfigView.swift; sourceTree = "<group>"; };
-		F19F0E182B7CD27E0052A3A5 /* AWSSignatureV4Delegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSSignatureV4Delegate.swift; sourceTree = "<group>"; };
+		F1C4DC5D2CC265E700AA235A /* MqttIoTContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MqttIoTContext.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,13 +98,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1C4DC5B2CC25B3500AA235A /* AWSIoTEvents in Frameworks */,
+				F1C4DC592CC25B3500AA235A /* AWSIoT in Frameworks */,
+				F1C4DC522CC1373300AA235A /* AwsCommonRuntimeKit in Frameworks */,
 				F17B27832B7A442E0026FAA6 /* MapLibre in Frameworks */,
-				F17B27732B7A3CB70026FAA6 /* AWSCore in Frameworks */,
-				F17B27712B7A3CB70026FAA6 /* AWSCognitoIdentityProviderASF in Frameworks */,
+				F1C4DC572CC25B3500AA235A /* AWSCognitoIdentity in Frameworks */,
 				F1E960482BC4149400192ACB /* AmazonLocationiOSTrackingSDK in Frameworks */,
-				F17B27772B7A3CB70026FAA6 /* AWSMobileClientXCF in Frameworks */,
-				F18CAC7E2B871C2800250F94 /* AWSIoT in Frameworks */,
-				F17B27752B7A3CB70026FAA6 /* AWSLocationXCF in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +146,7 @@
 				F17B27842B7A48DF0026FAA6 /* Info.plist */,
 				F17B276C2B7A39410026FAA6 /* Constants */,
 				F17B27652B7A39310026FAA6 /* Helpers */,
+				F1C4DC5C2CC265BD00AA235A /* iot */,
 				F17B27622B7A39250026FAA6 /* Filters */,
 				F17B274A2B7A38F40026FAA6 /* Scenes */,
 				F17B27202B6A606F0026FAA6 /* AWSLocationSampleApp.swift */,
@@ -250,7 +246,6 @@
 		F17B27652B7A39310026FAA6 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				F19F0E182B7CD27E0052A3A5 /* AWSSignatureV4Delegate.swift */,
 				F17B27662B7A39310026FAA6 /* SettingsDefaultValueHelper.swift */,
 				F17B27672B7A39310026FAA6 /* UserDefaultsHelper.swift */,
 				F17B27682B7A39310026FAA6 /* AlertPresenter.swift */,
@@ -267,6 +262,14 @@
 				F18CAC832B8C8E9900250F94 /* Localizable.xcstrings */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		F1C4DC5C2CC265BD00AA235A /* iot */ = {
+			isa = PBXGroup;
+			children = (
+				F1C4DC5D2CC265E700AA235A /* MqttIoTContext.swift */,
+			);
+			path = iot;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,13 +289,12 @@
 			);
 			name = AWSLocationSampleApp;
 			packageProductDependencies = (
-				F17B27702B7A3CB70026FAA6 /* AWSCognitoIdentityProviderASF */,
-				F17B27722B7A3CB70026FAA6 /* AWSCore */,
-				F17B27742B7A3CB70026FAA6 /* AWSLocationXCF */,
-				F17B27762B7A3CB70026FAA6 /* AWSMobileClientXCF */,
 				F17B27822B7A442E0026FAA6 /* MapLibre */,
-				F18CAC7D2B871C2800250F94 /* AWSIoT */,
 				F1E960472BC4149400192ACB /* AmazonLocationiOSTrackingSDK */,
+				F1C4DC512CC1373300AA235A /* AwsCommonRuntimeKit */,
+				F1C4DC562CC25B3500AA235A /* AWSCognitoIdentity */,
+				F1C4DC582CC25B3500AA235A /* AWSIoT */,
+				F1C4DC5A2CC25B3500AA235A /* AWSIoTEvents */,
 			);
 			productName = AWSLocationSampleApp;
 			productReference = F17B271D2B6A606F0026FAA6 /* AWSLocationSampleApp.app */;
@@ -324,7 +326,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1520;
-				LastUpgradeCheck = 1520;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					F17B271C2B6A606F0026FAA6 = {
 						CreatedOnToolsVersion = 15.2;
@@ -345,9 +347,10 @@
 			);
 			mainGroup = F17B27142B6A606F0026FAA6;
 			packageReferences = (
-				F17B276F2B7A3CB70026FAA6 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */,
 				F17B27812B7A442E0026FAA6 /* XCRemoteSwiftPackageReference "maplibre-gl-native-distribution" */,
 				F1E960462BC4149400192ACB /* XCRemoteSwiftPackageReference "amazon-location-mobile-tracking-sdk-ios" */,
+				F1C4DC502CC1373300AA235A /* XCRemoteSwiftPackageReference "aws-crt-swift" */,
+				F1C4DC552CC25B3500AA235A /* XCRemoteSwiftPackageReference "aws-sdk-swift" */,
 			);
 			productRefGroup = F17B271E2B6A606F0026FAA6 /* Products */;
 			projectDirPath = "";
@@ -364,7 +367,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CF559A32BC82D9600F1941A /* Config.xcconfig in Resources */,
 				F17B27282B6A60710026FAA6 /* Preview Assets.xcassets in Resources */,
 				F17B27252B6A60710026FAA6 /* Assets.xcassets in Resources */,
 				F18CAC842B8C8E9900250F94 /* Localizable.xcstrings in Resources */,
@@ -375,8 +377,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CF559A52BC82DA400F1941A /* TestConfig.xcconfig in Resources */,
-				7CF5599A2BC80FBD00F1941A /* TestConfigTemplate.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,10 +389,10 @@
 			files = (
 				F18CAC882B8F600800250F94 /* TrackingFilterView.swift in Sources */,
 				F17B276A2B7A39310026FAA6 /* UserDefaultsHelper.swift in Sources */,
+				F1C4DC5E2CC265E700AA235A /* MqttIoTContext.swift in Sources */,
 				F17B27232B6A606F0026FAA6 /* ContentView.swift in Sources */,
 				F17B27692B7A39310026FAA6 /* SettingsDefaultValueHelper.swift in Sources */,
 				F17B275C2B7A38F50026FAA6 /* MapView.swift in Sources */,
-				F19F0E192B7CD27E0052A3A5 /* AWSSignatureV4Delegate.swift in Sources */,
 				F17B276E2B7A39410026FAA6 /* StringConstants.swift in Sources */,
 				F18CAC802B87203D00250F94 /* TrackingViewModel.swift in Sources */,
 				F17B275F2B7A38F50026FAA6 /* TabsContentView.swift in Sources */,
@@ -517,6 +517,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -533,7 +534,6 @@
 		7CF559A12BC82D5800F1941A /* Test */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
@@ -690,6 +690,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -723,6 +724,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -739,7 +741,6 @@
 		F17B27482B6A60710026FAA6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
@@ -758,7 +759,6 @@
 		F17B27492B6A60710026FAA6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
@@ -810,14 +810,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F17B276F2B7A3CB70026FAA6 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/aws-amplify/aws-sdk-ios-spm.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.33.9;
-			};
-		};
 		F17B27812B7A442E0026FAA6 /* XCRemoteSwiftPackageReference "maplibre-gl-native-distribution" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/maplibre/maplibre-gl-native-distribution";
@@ -826,46 +818,57 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		F1C4DC502CC1373300AA235A /* XCRemoteSwiftPackageReference "aws-crt-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/awslabs/aws-crt-swift";
+			requirement = {
+				branch = mqtt_test_app;
+				kind = branch;
+			};
+		};
+		F1C4DC552CC25B3500AA235A /* XCRemoteSwiftPackageReference "aws-sdk-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/awslabs/aws-sdk-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.31;
+			};
+		};
 		F1E960462BC4149400192ACB /* XCRemoteSwiftPackageReference "amazon-location-mobile-tracking-sdk-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/aws-geospatial/amazon-location-mobile-tracking-sdk-ios";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMinorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F17B27702B7A3CB70026FAA6 /* AWSCognitoIdentityProviderASF */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F17B276F2B7A3CB70026FAA6 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
-			productName = AWSCognitoIdentityProviderASF;
-		};
-		F17B27722B7A3CB70026FAA6 /* AWSCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F17B276F2B7A3CB70026FAA6 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
-			productName = AWSCore;
-		};
-		F17B27742B7A3CB70026FAA6 /* AWSLocationXCF */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F17B276F2B7A3CB70026FAA6 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
-			productName = AWSLocationXCF;
-		};
-		F17B27762B7A3CB70026FAA6 /* AWSMobileClientXCF */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F17B276F2B7A3CB70026FAA6 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
-			productName = AWSMobileClientXCF;
-		};
 		F17B27822B7A442E0026FAA6 /* MapLibre */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F17B27812B7A442E0026FAA6 /* XCRemoteSwiftPackageReference "maplibre-gl-native-distribution" */;
 			productName = MapLibre;
 		};
-		F18CAC7D2B871C2800250F94 /* AWSIoT */ = {
+		F1C4DC512CC1373300AA235A /* AwsCommonRuntimeKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F17B276F2B7A3CB70026FAA6 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			package = F1C4DC502CC1373300AA235A /* XCRemoteSwiftPackageReference "aws-crt-swift" */;
+			productName = AwsCommonRuntimeKit;
+		};
+		F1C4DC562CC25B3500AA235A /* AWSCognitoIdentity */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F1C4DC552CC25B3500AA235A /* XCRemoteSwiftPackageReference "aws-sdk-swift" */;
+			productName = AWSCognitoIdentity;
+		};
+		F1C4DC582CC25B3500AA235A /* AWSIoT */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F1C4DC552CC25B3500AA235A /* XCRemoteSwiftPackageReference "aws-sdk-swift" */;
 			productName = AWSIoT;
+		};
+		F1C4DC5A2CC25B3500AA235A /* AWSIoTEvents */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F1C4DC552CC25B3500AA235A /* XCRemoteSwiftPackageReference "aws-sdk-swift" */;
+			productName = AWSIoTEvents;
 		};
 		F1E960472BC4149400192ACB /* AmazonLocationiOSTrackingSDK */ = {
 			isa = XCSwiftPackageProductDependency;

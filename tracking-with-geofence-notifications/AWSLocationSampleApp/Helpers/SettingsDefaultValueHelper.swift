@@ -9,7 +9,7 @@ import Foundation
 
 final class SettingsDefaultValueHelper {
     
-    static var shared = SettingsDefaultValueHelper()
+    @MainActor static let shared = SettingsDefaultValueHelper()
     
     func createValues() {     
     }

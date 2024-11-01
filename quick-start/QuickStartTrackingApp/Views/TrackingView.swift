@@ -4,16 +4,11 @@ struct TrackingView: View {
     @ObservedObject var trackingViewModel: TrackingViewModel
     var body: some View {
         ZStack(alignment: .bottom) {
-            if trackingViewModel.mapSigningIntialised {
-                MapView(trackingViewModel: trackingViewModel)
-                VStack {
-                    UserLocationView(trackingViewModel: trackingViewModel)
-                    CenterAddressView(trackingViewModel: trackingViewModel)
-                    TrackingBottomView(trackingViewModel: trackingViewModel)
-                }
-            }
-            else {
-                Text("Loading...") 
+            MapView(trackingViewModel: trackingViewModel)
+            VStack {
+                UserLocationView(trackingViewModel: trackingViewModel)
+                CenterAddressView(trackingViewModel: trackingViewModel)
+                TrackingBottomView(trackingViewModel: trackingViewModel)
             }
         }
         .alert(isPresented: $trackingViewModel.showAlert) {
@@ -24,6 +19,15 @@ struct TrackingView: View {
             )
         }
         .onAppear() {
+            Task {
+                do {
+                    try await trackingViewModel.initializeGeoPlacesClient()
+                }
+                catch {
+                    trackingViewModel.showErrorAlertPopup(title: "Error", message: "Error in authentication with API key: \(error.localizedDescription)")
+                }
+            }
+
             if !trackingViewModel.identityPoolId.isEmpty {
                 Task {
                     do {

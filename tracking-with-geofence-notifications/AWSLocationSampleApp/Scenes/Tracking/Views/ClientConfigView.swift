@@ -9,14 +9,20 @@ struct ClientConfigView: View {
     var body: some View {
         NavigationView {
             Form {
+                Text("API Key")
+                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                TextField("API Key", text: $authViewModel.apiKey)
+                    .accessibility(identifier: "ApiKey")
+                
+                Text("API Key Region")
+                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                TextField("API Key Region", text: $authViewModel.apiKeyRegion)
+                    .accessibility(identifier: "ApiKeyRegion")
+                
                 Text("Identity Pool ID")
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                 TextField("Identity Pool ID", text: $authViewModel.identityPoolId)
                     .accessibility(identifier: "IdentityPoolID")
-                
-                Text("Map Name")
-                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                TextField("Map Name", text: $authViewModel.mapName).accessibility(identifier: "MapName")
                 
                 Text("Tracker Name")
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
@@ -31,7 +37,7 @@ struct ClientConfigView: View {
                 TextField("Geofence Collection ARN", text: $authViewModel.geofenceCollectionArn).accessibility(identifier: "GeofenceCollectionARN")
                 
                 Button("Save Configuration") {
-                    if authViewModel.identityPoolId.isEmpty || authViewModel.mapName.isEmpty || authViewModel.trackerName.isEmpty || authViewModel.websocketUrl.isEmpty || authViewModel.geofenceCollectionArn.isEmpty {
+                    if authViewModel.identityPoolId.isEmpty || authViewModel.trackerName.isEmpty || authViewModel.websocketUrl.isEmpty || authViewModel.geofenceCollectionArn.isEmpty {
                         errorMessage = NSLocalizedString("FillAllFields", comment: "")
                         showError = true
                     }
