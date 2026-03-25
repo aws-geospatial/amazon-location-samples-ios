@@ -102,26 +102,28 @@ class MqttIoTContext: ObservableObject {
             self.semaphoreDisconnection.signal()
         }
         self.onWebSocketHandshake = onWebSocketHandshake ?? { request, complete in
-            do {
-                self.printView(contextName + " Mqtt5ClientTests: onWebSocketHandshake")
-                if let cognitoCredentials = cognitoCredentialsProvider.getCognitoCredentials() {
-                    let credentialsProvider = try CredentialsProvider(source: .static(accessKey: cognitoCredentials.accessKeyId, secret: cognitoCredentials.secretKey, sessionToken: cognitoCredentials.sessionToken))
-                    let signingConfig = SigningConfig(algorithm: SigningAlgorithmType.signingV4,
-                                                      signatureType: SignatureType.requestQueryParams,
-                                                      service: "iotdevicegateway",
-                                                      region: region,
-                                                      credentialsProvider: credentialsProvider,
-                                                      omitSessionToken: true)
-                    let returnedRequest = try await Signer.signRequest(request: request, config:signingConfig)
-                    complete(returnedRequest, AWS_OP_SUCCESS)
+            Task {
+                do {
+                    self.printView(contextName + " Mqtt5ClientTests: onWebSocketHandshake")
+                    if let cognitoCredentials = cognitoCredentialsProvider.getCognitoCredentials() {
+                        let credentialsProvider = try CredentialsProvider(source: .static(accessKey: cognitoCredentials.accessKeyId, secret: cognitoCredentials.secretKey, sessionToken: cognitoCredentials.sessionToken))
+                        let signingConfig = SigningConfig(algorithm: SigningAlgorithmType.signingV4,
+                                                          signatureType: SignatureType.requestQueryParams,
+                                                          service: "iotdevicegateway",
+                                                          region: region,
+                                                          credentialsProvider: credentialsProvider,
+                                                          omitSessionToken: true)
+                        let returnedRequest = try await Signer.signRequest(request: request, config:signingConfig)
+                        complete(returnedRequest, AWS_OP_SUCCESS)
+                    }
+                    else {
+                        complete(request, AWS_OP_SUCCESS)
+                    }
                 }
-                else {
-                    complete(request, AWS_OP_SUCCESS)
+                catch
+                {
+                    complete(request, Int32(AWS_ERROR_UNSUPPORTED_OPERATION.rawValue))
                 }
-            }
-            catch
-            {
-                complete(request, Int32(AWS_ERROR_UNSUPPORTED_OPERATION.rawValue))
             }
         }
     }
