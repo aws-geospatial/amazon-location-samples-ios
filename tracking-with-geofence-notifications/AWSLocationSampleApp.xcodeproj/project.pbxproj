@@ -822,8 +822,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/awslabs/aws-crt-swift";
 			requirement = {
-				branch = mqtt_test_app;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.58.1;
 			};
 		};
 		F1C4DC552CC25B3500AA235A /* XCRemoteSwiftPackageReference "aws-sdk-swift" */ = {
@@ -831,7 +831,7 @@
 			repositoryURL = "https://github.com/awslabs/aws-sdk-swift";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.31;
+				minimumVersion = 1.5.79;
 			};
 		};
 		F1E960462BC4149400192ACB /* XCRemoteSwiftPackageReference "amazon-location-mobile-tracking-sdk-ios" */ = {
